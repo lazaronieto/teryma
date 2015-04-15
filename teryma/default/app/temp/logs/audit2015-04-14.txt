@@ -1,0 +1,3 @@
+[Tue, 14 Apr 15 10:22:55 -0400][DEBUG] [/sistema/backups/crear/][admin][::1] Se crea una copia de seguridad bajo la denominación: PRUEBA2.
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] [/sistema/backups/crear/][admin][::1] Se crea una copia de seguridad bajo la denominación: SIN .GZ.
+[Tue, 14 Apr 15 10:38:09 -0400][DEBUG] [/sistema/backups/crear/][admin][::1] Se crea una copia de seguridad bajo la denominación: SIN .GZ 2.

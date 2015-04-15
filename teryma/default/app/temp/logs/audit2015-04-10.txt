@@ -1,0 +1,2 @@
+[Fri, 10 Apr 15 05:55:19 -0400][INFO] [/sistema/configuracion/config/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Fri, 10 Apr 15 05:55:19 -0400][INFO] [/sistema/configuracion/config/][admin][::1] Se ha actualizado el archivo de configuración del sistema.

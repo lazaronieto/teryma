@@ -1,0 +1,1 @@
+[Mon, 13 Apr 15 10:12:52 -0400][DEBUG] [/sistema/backups/crear/][admin][::1] Se crea una copia de seguridad bajo la denominación: PRUEBA.

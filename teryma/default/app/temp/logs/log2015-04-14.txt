@@ -1,0 +1,86 @@
+[Tue, 14 Apr 15 10:21:36 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:21:36 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:21:56 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:21:56 -0400][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Tue, 14 Apr 15 10:21:56 -0400][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Tue, 14 Apr 15 10:21:56 -0400][DEBUG] DESCRIBE `acceso`
+[Tue, 14 Apr 15 10:21:56 -0400][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','::1','2015-04-14 10:21:56')
+[Tue, 14 Apr 15 10:21:56 -0400][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 12 LIMIT 1
+[Tue, 14 Apr 15 10:21:56 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:21:56 -0400][DEBUG] DESCRIBE `menu`
+[Tue, 14 Apr 15 10:22:03 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:22:03 -0400][DEBUG] DESCRIBE `backup`
+[Tue, 14 Apr 15 10:22:03 -0400][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Tue, 14 Apr 15 10:22:03 -0400][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Tue, 14 Apr 15 10:22:47 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:22:54 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:22:54 -0400][DEBUG] DESCRIBE `backup`
+[Tue, 14 Apr 15 10:22:54 -0400][DEBUG] SELECT COUNT(*) FROM backup 
+[Tue, 14 Apr 15 10:22:54 -0400][DEBUG] BEGIN
+[Tue, 14 Apr 15 10:22:54 -0400][DEBUG] SELECT COUNT(*) FROM backup  WHERE denominacion = 'PRUEBA2'
+[Tue, 14 Apr 15 10:22:54 -0400][DEBUG] INSERT INTO backup (usuario_id,denominacion,tamano,archivo,backup_at) VALUES ('2','PRUEBA2',NULL,'backup-3.sql.gz','2015-04-14 10:22:54')
+[Tue, 14 Apr 15 10:22:54 -0400][DEBUG] SELECT id,usuario_id,denominacion,tamano,archivo,backup_at FROM backup WHERE id = 3 LIMIT 1
+[Tue, 14 Apr 15 10:22:54 -0400][DEBUG] SHOW variables WHERE variable_name= 'basedir'
+[Tue, 14 Apr 15 10:22:55 -0400][DEBUG] SELECT COUNT(*) FROM backup WHERE  id = '3'
+[Tue, 14 Apr 15 10:22:55 -0400][DEBUG] SELECT COUNT(*) FROM backup WHERE  id = '3'
+[Tue, 14 Apr 15 10:22:55 -0400][DEBUG] SELECT COUNT(*) FROM backup  WHERE denominacion = 'PRUEBA2' AND id != 3
+[Tue, 14 Apr 15 10:22:55 -0400][DEBUG] UPDATE backup SET usuario_id = '2',denominacion = 'PRUEBA2',tamano = '20 Bytes',archivo = 'backup-3.sql.gz',backup_at = '2015-04-14 10:22:54' WHERE  id = '3'
+[Tue, 14 Apr 15 10:22:55 -0400][DEBUG] COMMIT
+[Tue, 14 Apr 15 10:22:55 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:22:55 -0400][DEBUG] DESCRIBE `backup`
+[Tue, 14 Apr 15 10:22:55 -0400][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Tue, 14 Apr 15 10:22:55 -0400][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Tue, 14 Apr 15 10:23:20 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:23:20 -0400][DEBUG] DESCRIBE `backup`
+[Tue, 14 Apr 15 10:23:20 -0400][DEBUG] SELECT id,usuario_id,denominacion,tamano,archivo,backup_at FROM backup WHERE id = 3 LIMIT 1
+[Tue, 14 Apr 15 10:35:10 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:35:10 -0400][DEBUG] DESCRIBE `backup`
+[Tue, 14 Apr 15 10:35:10 -0400][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Tue, 14 Apr 15 10:35:10 -0400][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Tue, 14 Apr 15 10:35:10 -0400][DEBUG] DESCRIBE `menu`
+[Tue, 14 Apr 15 10:35:17 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] DESCRIBE `backup`
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] SELECT COUNT(*) FROM backup 
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] BEGIN
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] SELECT COUNT(*) FROM backup  WHERE denominacion = 'SIN .GZ'
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] INSERT INTO backup (usuario_id,denominacion,tamano,archivo,backup_at) VALUES ('2','SIN .GZ',NULL,'backup-4.sql.gz','2015-04-14 10:35:28')
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] SELECT id,usuario_id,denominacion,tamano,archivo,backup_at FROM backup WHERE id = 4 LIMIT 1
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] SHOW variables WHERE variable_name= 'basedir'
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] SELECT COUNT(*) FROM backup WHERE  id = '4'
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] SELECT COUNT(*) FROM backup WHERE  id = '4'
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] SELECT COUNT(*) FROM backup  WHERE denominacion = 'SIN .GZ' AND id != 4
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] UPDATE backup SET usuario_id = '2',denominacion = 'SIN .GZ',tamano = '20 Bytes',archivo = 'backup-4.sql.gz',backup_at = '2015-04-14 10:35:28' WHERE  id = '4'
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] COMMIT
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] DESCRIBE `backup`
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Tue, 14 Apr 15 10:35:28 -0400][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Tue, 14 Apr 15 10:37:56 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:37:56 -0400][DEBUG] DESCRIBE `backup`
+[Tue, 14 Apr 15 10:37:56 -0400][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Tue, 14 Apr 15 10:37:56 -0400][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Tue, 14 Apr 15 10:37:56 -0400][DEBUG] DESCRIBE `menu`
+[Tue, 14 Apr 15 10:38:01 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:38:08 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:38:08 -0400][DEBUG] DESCRIBE `backup`
+[Tue, 14 Apr 15 10:38:08 -0400][DEBUG] SELECT COUNT(*) FROM backup 
+[Tue, 14 Apr 15 10:38:08 -0400][DEBUG] BEGIN
+[Tue, 14 Apr 15 10:38:08 -0400][DEBUG] SELECT COUNT(*) FROM backup  WHERE denominacion = 'SIN .GZ 2'
+[Tue, 14 Apr 15 10:38:08 -0400][DEBUG] INSERT INTO backup (usuario_id,denominacion,tamano,archivo,backup_at) VALUES ('2','SIN .GZ 2',NULL,'backup-5.sql','2015-04-14 10:38:08')
+[Tue, 14 Apr 15 10:38:08 -0400][DEBUG] SELECT id,usuario_id,denominacion,tamano,archivo,backup_at FROM backup WHERE id = 5 LIMIT 1
+[Tue, 14 Apr 15 10:38:08 -0400][DEBUG] SHOW variables WHERE variable_name= 'basedir'
+[Tue, 14 Apr 15 10:38:09 -0400][DEBUG] SELECT COUNT(*) FROM backup WHERE  id = '5'
+[Tue, 14 Apr 15 10:38:09 -0400][DEBUG] SELECT COUNT(*) FROM backup WHERE  id = '5'
+[Tue, 14 Apr 15 10:38:09 -0400][DEBUG] SELECT COUNT(*) FROM backup  WHERE denominacion = 'SIN .GZ 2' AND id != 5
+[Tue, 14 Apr 15 10:38:09 -0400][DEBUG] UPDATE backup SET usuario_id = '2',denominacion = 'SIN .GZ 2',tamano = '20 Bytes',archivo = 'backup-5.sql',backup_at = '2015-04-14 10:38:08' WHERE  id = '5'
+[Tue, 14 Apr 15 10:38:09 -0400][DEBUG] COMMIT
+[Tue, 14 Apr 15 10:38:09 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:38:09 -0400][DEBUG] DESCRIBE `backup`
+[Tue, 14 Apr 15 10:38:09 -0400][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Tue, 14 Apr 15 10:38:09 -0400][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Tue, 14 Apr 15 10:38:22 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:38:22 -0400][DEBUG] DESCRIBE `backup`
+[Tue, 14 Apr 15 10:38:22 -0400][DEBUG] SELECT id,usuario_id,denominacion,tamano,archivo,backup_at FROM backup WHERE id = 5 LIMIT 1
+[Tue, 14 Apr 15 10:45:24 -0400][DEBUG] DESCRIBE `usuario`
+[Tue, 14 Apr 15 10:45:27 -0400][DEBUG] DESCRIBE `usuario`

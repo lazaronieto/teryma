@@ -1,0 +1,187 @@
+[Fri, 10 Apr 15 05:29:28 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 05:29:28 -0400][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:30:47 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 05:30:47 -0400][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:31:03 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:31:35 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:31:35 -0400][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Fri, 10 Apr 15 05:31:35 -0400][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Fri, 10 Apr 15 05:31:35 -0400][DEBUG] DESCRIBE `acceso`
+[Fri, 10 Apr 15 05:31:35 -0400][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','::1','2015-04-10 5:31:35')
+[Fri, 10 Apr 15 05:31:36 -0400][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 1 LIMIT 1
+[Fri, 10 Apr 15 05:31:36 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:31:36 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 05:32:00 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:32:03 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:32:08 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:32:29 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:32:35 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:32:35 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 05:32:35 -0400][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:32:35 -0400][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:32:35 -0400][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:32:47 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:33:21 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:33:35 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:33:35 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 05:33:35 -0400][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:33:35 -0400][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:33:35 -0400][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:34:01 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:35:00 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:35:00 -0400][DEBUG] DESCRIBE `backup`
+[Fri, 10 Apr 15 05:35:00 -0400][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Fri, 10 Apr 15 05:35:00 -0400][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Fri, 10 Apr 15 05:39:50 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 05:39:50 -0400][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:50:33 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 05:50:34 -0400][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:50:49 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 05:50:49 -0400][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:51:40 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 05:51:40 -0400][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 05:52:00 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:52:00 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:52:00 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 05:52:06 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:52:12 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:52:12 -0400][DEBUG] DESCRIBE `acceso`
+[Fri, 10 Apr 15 05:52:12 -0400][DEBUG] SELECT COUNT(*) FROM acceso  INNER JOIN usuario ON usuario.id = acceso.usuario_id  WHERE usuario.id > '1'
+[Fri, 10 Apr 15 05:52:12 -0400][DEBUG] SELECT acceso.*, usuario.login, usuario.nombre, usuario.apellido FROM acceso INNER JOIN usuario ON usuario.id = acceso.usuario_id  WHERE usuario.id > '1' ORDER BY acceso.acceso_at DESC, usuario.nombre ASC, usuario.apellido ASC LIMIT 30 OFFSET 0
+[Fri, 10 Apr 15 05:52:42 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:52:46 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:52:46 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:52:56 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:52:56 -0400][DEBUG] DESCRIBE `backup`
+[Fri, 10 Apr 15 05:52:56 -0400][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Fri, 10 Apr 15 05:52:56 -0400][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Fri, 10 Apr 15 05:53:03 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:53:16 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:53:20 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:53:48 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:53:48 -0400][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.id = 2 LIMIT 1
+[Fri, 10 Apr 15 05:54:01 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:54:04 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:54:04 -0400][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Fri, 10 Apr 15 05:54:04 -0400][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Fri, 10 Apr 15 05:54:10 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:54:13 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:54:16 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:54:18 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:55:19 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:55:29 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:55:32 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:55:33 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:55:34 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 05:59:39 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:00:16 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:00:16 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 06:00:16 -0400][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 06:00:16 -0400][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 06:00:16 -0400][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 06:00:58 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:01:29 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:01:29 -0400][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Fri, 10 Apr 15 06:01:29 -0400][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Fri, 10 Apr 15 06:01:39 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:01:39 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 06:01:39 -0400][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 06:01:39 -0400][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 06:01:39 -0400][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 06:04:57 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:04:57 -0400][DEBUG] DESCRIBE `acceso`
+[Fri, 10 Apr 15 06:04:57 -0400][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','2','::1','2015-04-10 6:04:57')
+[Fri, 10 Apr 15 06:04:57 -0400][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 2 LIMIT 1
+[Fri, 10 Apr 15 06:04:57 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:05:14 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:05:14 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:05:24 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:05:24 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:05:31 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:05:31 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:06:12 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:06:15 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:06:35 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 06:06:35 -0400][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 06:12:39 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:13:14 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:13:14 -0400][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Fri, 10 Apr 15 06:13:14 -0400][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Fri, 10 Apr 15 06:13:14 -0400][DEBUG] DESCRIBE `acceso`
+[Fri, 10 Apr 15 06:13:14 -0400][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','::1','2015-04-10 6:13:14')
+[Fri, 10 Apr 15 06:13:14 -0400][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 3 LIMIT 1
+[Fri, 10 Apr 15 06:13:14 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:13:14 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 06:13:29 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:14:29 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:14:29 -0400][DEBUG] DESCRIBE `acceso`
+[Fri, 10 Apr 15 06:14:29 -0400][DEBUG] SELECT COUNT(*) FROM acceso  INNER JOIN usuario ON usuario.id = acceso.usuario_id  WHERE usuario.id > '1'
+[Fri, 10 Apr 15 06:14:29 -0400][DEBUG] SELECT acceso.*, usuario.login, usuario.nombre, usuario.apellido FROM acceso INNER JOIN usuario ON usuario.id = acceso.usuario_id  WHERE usuario.id > '1' ORDER BY acceso.acceso_at DESC, usuario.nombre ASC, usuario.apellido ASC LIMIT 30 OFFSET 0
+[Fri, 10 Apr 15 06:14:32 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:14:41 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:14:43 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:14:45 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:14:49 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:15:44 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:16:00 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:40:35 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 06:40:35 -0400][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 06:40:42 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:40:42 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:40:42 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 06:41:35 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:41:35 -0400][DEBUG] DESCRIBE `backup`
+[Fri, 10 Apr 15 06:41:35 -0400][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Fri, 10 Apr 15 06:41:35 -0400][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Fri, 10 Apr 15 06:41:39 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:41:39 -0400][DEBUG] DESCRIBE `acceso`
+[Fri, 10 Apr 15 06:41:39 -0400][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','2','::1','2015-04-10 6:41:39')
+[Fri, 10 Apr 15 06:41:39 -0400][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 4 LIMIT 1
+[Fri, 10 Apr 15 06:41:39 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:41:43 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:41:43 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:41:48 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 06:41:48 -0400][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 06:45:10 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 06:45:10 -0400][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 06:45:13 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:45:25 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:45:25 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:45:38 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:45:38 -0400][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Fri, 10 Apr 15 06:45:38 -0400][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Fri, 10 Apr 15 06:45:38 -0400][DEBUG] DESCRIBE `acceso`
+[Fri, 10 Apr 15 06:45:38 -0400][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','::1','2015-04-10 6:45:38')
+[Fri, 10 Apr 15 06:45:38 -0400][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 5 LIMIT 1
+[Fri, 10 Apr 15 06:45:38 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 06:45:38 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 10:43:36 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 10:43:36 -0400][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 10 Apr 15 10:43:41 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:43:52 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:43:52 -0400][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Fri, 10 Apr 15 10:43:52 -0400][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Fri, 10 Apr 15 10:43:53 -0400][DEBUG] DESCRIBE `acceso`
+[Fri, 10 Apr 15 10:43:53 -0400][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','::1','2015-04-10 10:43:53')
+[Fri, 10 Apr 15 10:43:53 -0400][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 6 LIMIT 1
+[Fri, 10 Apr 15 10:43:53 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:43:53 -0400][DEBUG] DESCRIBE `menu`
+[Fri, 10 Apr 15 10:43:58 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:43:58 -0400][DEBUG] DESCRIBE `acceso`
+[Fri, 10 Apr 15 10:43:58 -0400][DEBUG] SELECT COUNT(*) FROM acceso  INNER JOIN usuario ON usuario.id = acceso.usuario_id  WHERE usuario.id > '1'
+[Fri, 10 Apr 15 10:43:58 -0400][DEBUG] SELECT acceso.*, usuario.login, usuario.nombre, usuario.apellido FROM acceso INNER JOIN usuario ON usuario.id = acceso.usuario_id  WHERE usuario.id > '1' ORDER BY acceso.acceso_at DESC, usuario.nombre ASC, usuario.apellido ASC LIMIT 30 OFFSET 0
+[Fri, 10 Apr 15 10:44:02 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:44:04 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:44:04 -0400][DEBUG] DESCRIBE `backup`
+[Fri, 10 Apr 15 10:44:04 -0400][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Fri, 10 Apr 15 10:44:04 -0400][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Fri, 10 Apr 15 10:44:59 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:44:59 -0400][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Fri, 10 Apr 15 10:44:59 -0400][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Fri, 10 Apr 15 10:45:03 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:46:50 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:47:15 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:47:23 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:48:06 -0400][DEBUG] DESCRIBE `usuario`
+[Fri, 10 Apr 15 10:48:06 -0400][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Fri, 10 Apr 15 10:48:07 -0400][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
