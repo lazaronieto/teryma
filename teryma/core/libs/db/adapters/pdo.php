@@ -15,7 +15,7 @@
  * @category   Kumbia
  * @package    Db
  * @subpackage Adapters 
- * @copyright  Copyright (c) 2005-2012 Kumbia Team (http://www.kumbiaphp.com)
+ * @copyright  Copyright (c) 2005-2014 Kumbia Team (http://www.kumbiaphp.com)
  * @license    http://wiki.kumbiaphp.com/Licencia     New BSD License
  */
 /**
@@ -61,6 +61,10 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
      * Número de filas afectadas
      */
     protected $affected_rows;
+    /**
+     * Nombre del Driver RBDM
+     */
+    protected $db_rbdm;
 
     /**
      * Resultado de Array Asociativo
@@ -84,7 +88,7 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
      * Hace una conexión a la base de datos de MySQL
      *
      * @param array $config
-     * @return resource_connection
+     * @return bool
      */
     public function connect($config)
     {
@@ -117,7 +121,7 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
     /**
      * Efectua operaciones SQL sobre la base de datos
      *
-     * @param string $sqlQuery
+     * @param string $sql_query
      * @return resource or false
      */
     public function query($sql_query)
@@ -146,8 +150,8 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
     /**
      * Efectua operaciones SQL sobre la base de datos y devuelve el numero de filas afectadas
      *
-     * @param string $sqlQuery
-     * @return resource or false
+     * @param string $sql_query
+     * @return integer
      */
     public function exec($sql_query)
     {
@@ -188,11 +192,11 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
     /**
      * Devuelve fila por fila el contenido de un select
      *
-     * @param resource $result_query
+     * @param resource $pdo_statement
      * @param int $opt
      * @return array
      */
-    public function fetch_array($pdo_statement='', $opt='')
+    public function fetch_array($pdo_statement=NULL, $opt='')
     {
         if ($opt === '') {
             $opt = self::DB_BOTH;
@@ -245,10 +249,10 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
      * Devuelve el nombre de un campo en el resultado de un select
      *
      * @param int $number
-     * @param resource $result_query
+     * @param resource $pdo_statement
      * @return string
      */
-    public function field_name($number, $pdo_statement='')
+    public function field_name($number, $pdo_statement=NULL)
     {
         if (!$this->pdo) {
             throw new KumbiaException('No hay conexión para realizar esta acción');
@@ -265,17 +269,16 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
         } catch (PDOException $e) {
             throw new KumbiaException($this->error($e->getMessage()));
         }
-        return false;
     }
 
     /**
      * Se Mueve al resultado indicado por $number en un select (No soportado por PDO)
      *
      * @param int $number
-     * @param PDOStatement $result_query
+     * @param PDOStatement $pdo_statement
      * @return boolean
      */
-    public function data_seek($number, $pdo_statement='')
+    public function data_seek($number, $pdo_statement=NULL)
     {
         return false;
     }
@@ -283,11 +286,11 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
     /**
      * Numero de Filas afectadas en un insert, update o delete
      *
-     * @param resource $result_query
+     * @param resource $pdo_statement
      * @deprecated
      * @return int
      */
-    public function affected_rows($pdo_statement='')
+    public function affected_rows($pdo_statement=NULL)
     {
         if (!$this->pdo) {
             throw new KumbiaException('No hay conexión para realizar esta acción');
@@ -305,7 +308,6 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
         } else {
             return $this->affected_rows;
         }
-        return false;
     }
 
     /**
@@ -345,13 +347,10 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
     /**
      * Devuelve el ultimo id autonumerico generado en la BD
      *
-     * @return int
+     * @return string
      */
     public function last_insert_id($table='', $primary_key='')
     {
-        if (!$this->pdo) {
-            return false;
-        }
         return $this->pdo->lastInsertId();
     }
 
@@ -398,11 +397,11 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
      * @param string $table
      * @param array $values
      * @param array $fields
-     * @return boolean
+     * @return integer
      */
     public function insert($table, $values, $fields=null)
     {
-        $insert_sql = "";
+        //$insert_sql = "";
         if (is_array($values)) {
             if (!count($values)) {
                 throw new KumbiaException("Imposible realizar inserción en $table sin datos");
@@ -425,7 +424,7 @@ abstract class DbPDO extends DbBase implements DbPDOInterface
      * @param array $fields
      * @param array $values
      * @param string $where_condition
-     * @return boolean
+     * @return integer
      */
     public function update($table, $fields, $values, $where_condition=null)
     {

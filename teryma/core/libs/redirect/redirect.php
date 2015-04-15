@@ -14,7 +14,7 @@
  *
  * @category   Kumbia
  * @package    Router
- * @copyright  Copyright (c) 2005-2012 Kumbia Team (http://www.kumbiaphp.com)
+ * @copyright  Copyright (c) 2005-2014 Kumbia Team (http://www.kumbiaphp.com)
  * @license    http://wiki.kumbiaphp.com/Licencia     New BSD License
  */
 
@@ -44,8 +44,7 @@ class Redirect
         if ($seconds) {
             header("Refresh: $seconds; url=$route");
         } else {
-            header('HTTP/1.1 ' . $statusCode);
-            header("Location: $route");
+            header('Location: '.$route, TRUE, $statusCode);
             $_SESSION['KUMBIA.CONTENT'] = ob_get_clean();
             View::select(null, null);
         }
@@ -74,6 +73,7 @@ class Redirect
     {
         static $cyclic = 0;
         $url = Util::getParams(func_get_args());
+        $vars = array();
 
         if (isset($url['module'])) {
             $vars['module'] = $url['module'];

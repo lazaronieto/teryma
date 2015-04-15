@@ -15,7 +15,7 @@
  * @category Kumbia
  * @package Auth
  * @subpackage Adapters
- * @copyright  Copyright (c) 2005-2012 Kumbia Team (http://www.kumbiaphp.com)
+ * @copyright  Copyright (c) 2005-2014 Kumbia Team (http://www.kumbiaphp.com)
  * @license    http://wiki.kumbiaphp.com/Licencia     New BSD License
  */
 
@@ -58,6 +58,18 @@ class Kerberos5Auth implements AuthInterface
      * Resource Kerberos5
      */
     private $resource;
+    /**
+     * Realm para autentificar
+     *
+     * @var string
+     */
+    private $realm;
+    /**
+     * El principal
+     *
+     * @var string
+     */
+    private $principal;
 
     /**
      * Constructor del adaptador
