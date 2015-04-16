@@ -1,0 +1,55 @@
+<?php
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * @category app
+ * @package views/vias
+ * @author Lázaro Nieto Aranda
+ * @date 16-abr-2015
+ * @time 15:08:51
+ */
+ ?>
+ <?php View::flash(); ?>
+
+<script type="text/javascript">
+    $(function() {
+        $('table').kgrid({
+            order_to:   $.KumbiaPHP.publicPath+"vias/vias/listar/",
+            order_attr: '<?php echo (APP_AJAX) ? 'class="js-link js-spinner"' : ''; ?>'
+        });
+    });
+</script>
+
+<div class="container shell-view">
+
+    <?php View::process($page_module, $page_title, $set_title); ?>
+
+    
+   
+    
+            
+            <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+                <thead>
+                    <tr>
+                        <th>VÍA</th>                        
+                        <th data-order="largo">LONGITUD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if($vias) { ?>
+                        <?php foreach($vias as $row): ?>
+                            <tr>
+                                <td><?php echo $row -> id; ?></td>                                
+                                <td><?php echo $row -> largo; ?></td>
+
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php } ?>
+                </tbody>
+            </table>
+  
+</div>
