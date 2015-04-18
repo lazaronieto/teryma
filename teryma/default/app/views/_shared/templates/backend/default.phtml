@@ -26,7 +26,10 @@
             textarea, select, input[type="text"], input[type="search"], .uneditable-input { text-transform: uppercase; font-size: 13px }
             <?php } ?>                          
         </style>
-        <?php echo Tag::js('jquery/jquery.min').PHP_EOL; ?>        
+        <?php echo Tag::js('jquery/jquery.min').PHP_EOL; ?>
+        
+        <?php echo Tag::js('multi/jquery-ui').PHP_EOL; ?>
+        <?php echo Tag::js('multi/jquery.multisortable').PHP_EOL; ?> 
        
         <?php echo Tag::js('jquery/ui/jquery.ui.widget'); ?>
         <?php echo Tag::js('jquery/jquery-file-upload/jquery.iframe-transport'); ?>

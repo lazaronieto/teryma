@@ -24,7 +24,8 @@ class ViasController extends BackendController {
         //Se cambia el nombre de la página actual
         $this->page_title = 'playa de vías';
 	//Se cambia el nombre del módulo actual
-	$this->page_module = 'Estado de las vías';      
+	$this->page_module = 'Estado de las vías';    
+        
     }
 
 	/**

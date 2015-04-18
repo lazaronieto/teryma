@@ -26,7 +26,7 @@ class Vias extends ActiveRecord {
     }
 
     public function getVias() { 
-        //return $this;
-        return $this->find_all_by_sql("SELECT * FROM vias  ORDER BY id ASC");
+        return $this->find();
+        //return $this->find_all_by_sql("SELECT * FROM vias  ORDER BY id ASC");
     }
 }
