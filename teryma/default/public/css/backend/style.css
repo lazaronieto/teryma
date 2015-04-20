@@ -126,3 +126,13 @@ small.help-error { display: none;}
 .has-error p.help-block { margin-top: 0px;}
 
 .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] { margin-top: 2px; }
+
+.lm-placeholder {
+	border: 3px dotted red;
+	width: 50px;
+	height: 20px !important;
+	background-color: #078cd9;
+	color: red;
+    } 
+.lm-placeholder::before{content: ">---<";}
+li.selected { outline: 1px solid red; }

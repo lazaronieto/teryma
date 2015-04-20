@@ -14,7 +14,11 @@
  */
  ?>
  <?php View::flash(); ?>
-
+<?php
+echo Tag::js('multi/jquery');
+echo Tag::js('multi/jquery-ui');
+echo Tag::js('multi/jquery.multisortable'); //Adiciona un archivo javascript (/app/public/javascript/jquery/jquery.kumbiaphp.js)
+?>
 <script type="text/javascript">
     $(function() {
         $('table').kgrid({
@@ -28,7 +32,25 @@
 
     <?php View::process($page_module, $page_title, $set_title); ?>
 
-    
+    <?php if($vias) { ?>
+	<?php foreach($vias as $row): ?>
+            <div>Vía <?php echo $row->id; ?></div>
+            <div class="row" style="width:<?php echo $row->largo *3; ?>px; height:60px; padding-bottom:2px; border: 1px solid #7C7C7C; border-bottom: 3px solid black;" id="via<?php echo $row->id; ?>">
+				<ul id="v<?php echo $row->id; ?>" class="sortable" style="width:<?php echo $row->largo; ?>px; height:60px; list-style: none;">
+                                    <?php foreach($row->getVagon() as $vag): ?>
+					<li style="cursor: pointer; display:inline-block;height: 60px; ">
+                                            <table style="">
+                                                <tr><td>hola</td></tr>
+                                                <tr><td><?php echo $vag->tipo_id ?></td></tr>
+                                                <tr><td><?php echo $vag->id_vagon ?></td></tr>
+                                            </table>
+                                        </li>
+                                    <?php endforeach; ?>
+				</ul>
+			</div>
+			<div class="row separador" style="width:100%; height:30px;"></div>
+        <?php endforeach; ?>
+    <?php } ?>
    
     
             
@@ -53,3 +75,48 @@
             </table>
   
 </div>
+
+<script type="text/javascript">
+    jQuery(function($){
+        $('ul.sortable').multisortable();
+				
+        $("ul").sortable({
+            connectWith : ['ul'],
+            opacity: 0.3,
+            //placeholder: 'highlight',
+            placeholder: "lm-placeholder", revert: true,
+            forcePlaceholderSize: 'true', 
+            helper: "clone",
+            delay: 600,
+            update : function(event, ui) {
+                var or, ord;
+                if (ui.sender){
+                    or = ui.sender.attr('id');
+                } else {
+                    or = this.id;
+                }
+                ord = ui.item.parent().attr('id');
+                orden(or, ord);
+            }
+        });
+              
+        $( "li" ).disableSelection();
+
+        function orden(via1,via2){
+            var ordenElementos = $('#'+via1).sortable("toArray").toString();
+            $('#resultado').append(via1+"->"+ordenElementos+"<br/>");
+            var or = $('#'+ via2).sortable("toArray").toString();
+            $('#resultado').append(via2+"->"+or+"<br/>");
+            $('#resultado').append(via2+"->"+or[0]+"<br/>");
+			//$('li.selected').removeClass('selected');
+        }
+			
+        $('.separador').click(function(){
+            $('li.selected').removeClass('selected');
+        });
+    });
+			
+    $('.separador').click(function(){
+        $('li.selected').removeClass('selected');
+    });
+		</script>

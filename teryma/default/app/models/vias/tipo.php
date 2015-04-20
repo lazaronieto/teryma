@@ -7,24 +7,22 @@
  */
 
 /**
- * @category app
- * @package models/vias
+ * @category 
+ * @package 
  * @author Lázaro Nieto Aranda
- * @date 16-abr-2015
- * @time 15:00:06
+ * @date 20-abr-2015
+ * @time 10:31:17
  */
 
-class Vagon extends ActiveRecord {
+class Tipo extends ActiveRecord {
     
      //Se desabilita el logger para no llenar el archivo de "basura"
     public $logger = FALSE;
     
     public function initialize(){
         //Relaciones
-        //Un vagón solo puede estar en una vía
-        $this->belongs_to('vias/vias');
         //Un vagón solo puede ser de un tipo
-        $this->belongs_to('vias/tipo');
+        $this->belongs_to('vias/vagon');
     }
     
 }

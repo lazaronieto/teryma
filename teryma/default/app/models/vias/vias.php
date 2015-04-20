@@ -21,7 +21,7 @@ class Vias extends ActiveRecord {
     
     public function initialize(){
         //Relaciones
-        //Un especialidad tiene muchos profesionales
+        //Una vía tiene muchos vagones
         $this->has_many('vias/vagon');
     }
 
