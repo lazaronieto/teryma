@@ -35,14 +35,29 @@ echo Tag::js('multi/jquery.multisortable'); //Adiciona un archivo javascript (/a
     <?php if($vias) { ?>
 	<?php foreach($vias as $row): ?>
             <div>Vía <?php echo $row->id; ?></div>
-            <div class="row" style="width:<?php echo $row->largo *3; ?>px; height:60px; padding-bottom:2px; border: 1px solid #7C7C7C; border-bottom: 3px solid black;" id="via<?php echo $row->id; ?>">
+            <div class="row" style="width:<?php echo $row->largo *3.333; ?>px; height:60px; padding-bottom:2px; border: 1px solid #7C7C7C; border-bottom: 3px solid black;" id="via<?php echo $row->id; ?>">
 				<ul id="v<?php echo $row->id; ?>" class="sortable" style="width:<?php echo $row->largo; ?>px; height:60px; list-style: none;">
                                     <?php foreach($row->getVagon() as $vag): ?>
+                                        <?php $tipo = Load::model('vias/tipo')->find($vag->tipo_id); ?>
+                                        <?php //$cajas = Load::model('vias/caja')->ffind_by_sql("select * from caja where vagon_id = '$vag->id'"); ?>
+                                        <?php //$cajas->vagon_id=$vag->id ?>
+                                        <?php //if ($cajas->exists()){
+                                            $cajas = Load::model('vias/caja')->find_by_sql("select * from caja where vagon_id = '$vag->id'");//}
+                                            if ($cajas->id_caja=='') {
+                                                $cajas->id_caja='------';
+                                            }
+                                            //else{$cajas->id_caja='------';} ?>
 					<li style="cursor: pointer; display:inline-block;height: 60px; ">
-                                            <table style="">
-                                                <tr><td>hola</td></tr>
-                                                <tr><td><?php echo $vag->tipo_id ?></td></tr>
-                                                <tr><td><?php echo $vag->id_vagon ?></td></tr>
+                                            <table style="width:<?php echo $tipo->medida*3.333 ?>; margin-right:2px;">
+                                                <tr>
+                                                    <?php $cont =0; ?>
+                                                    <?php //foreach ($cajas as $caja):?>
+                                                    <td><?php echo $cajas->id_caja; ?></td>
+                                                    <?php $cont++; ?>
+                                                    <?php //endforeach;?>
+                                                </tr>
+                                                <tr><td colspan="<?php echo $cont ?>"><?php echo $tipo->tipo ?><?php //echo img_tag(“carro.gif”, “width: 100”, “border: 0”) ?></td></tr>
+                                                <tr><td colspan="<?php echo $cont ?>"><?php echo $vag->id_vagon ?></td></tr>
                                             </table>
                                         </li>
                                     <?php endforeach; ?>

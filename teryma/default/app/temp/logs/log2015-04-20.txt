@@ -62,3 +62,48 @@
 [Mon, 20 Apr 15 11:04:23 +0200][DEBUG] DESCRIBE `menu`
 [Mon, 20 Apr 15 11:16:55 +0200][DEBUG] DESCRIBE `usuario`
 [Mon, 20 Apr 15 11:16:56 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:23:47 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:23:47 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:24:11 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:24:11 +0200][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Mon, 20 Apr 15 23:24:11 +0200][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Mon, 20 Apr 15 23:24:11 +0200][DEBUG] DESCRIBE `acceso`
+[Mon, 20 Apr 15 23:24:11 +0200][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','::1','2015-04-20 23:24:11')
+[Mon, 20 Apr 15 23:24:11 +0200][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 22 LIMIT 1
+[Mon, 20 Apr 15 23:24:11 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:24:11 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:24:17 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:24:17 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:34:08 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:34:08 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:34:08 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:35:45 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:35:45 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:40:27 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:40:27 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:40:34 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:40:34 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:42:26 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:42:26 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:42:28 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:42:28 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:43:57 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:43:57 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:45:03 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:45:03 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:46:49 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:46:49 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:46:53 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:46:53 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:54:10 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:54:10 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:54:13 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:54:13 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:55:25 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:55:25 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:55:28 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:55:28 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:56:37 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:56:37 +0200][DEBUG] DESCRIBE `menu`
+[Mon, 20 Apr 15 23:58:47 +0200][DEBUG] DESCRIBE `usuario`
+[Mon, 20 Apr 15 23:58:47 +0200][DEBUG] DESCRIBE `menu`

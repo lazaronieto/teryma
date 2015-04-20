@@ -130,7 +130,7 @@ small.help-error { display: none;}
 .lm-placeholder {
 	border: 3px dotted red;
 	width: 50px;
-	height: 20px !important;
+	height: 60px !important;
 	background-color: #078cd9;
 	color: red;
     } 
