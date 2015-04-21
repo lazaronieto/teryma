@@ -125,3 +125,129 @@
 [Tue, 21 Apr 15 11:54:03 +0200][DEBUG] DESCRIBE `menu`
 [Tue, 21 Apr 15 12:13:24 +0200][DEBUG] DESCRIBE `usuario`
 [Tue, 21 Apr 15 12:13:24 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:31:32 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:31:32 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:31:45 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:31:45 +0200][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Tue, 21 Apr 15 23:31:45 +0200][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Tue, 21 Apr 15 23:31:45 +0200][DEBUG] DESCRIBE `acceso`
+[Tue, 21 Apr 15 23:31:45 +0200][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','::1','2015-04-21 23:31:45')
+[Tue, 21 Apr 15 23:31:45 +0200][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 24 LIMIT 1
+[Tue, 21 Apr 15 23:31:45 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:31:45 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:31:50 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:31:50 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:32:51 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:32:51 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:32:51 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:32:59 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:32:59 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:33:00 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:33:00 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:33:00 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:33:16 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:33:16 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:33:16 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE id = 16 LIMIT 1
+[Tue, 21 Apr 15 23:33:16 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.id IS NOT NULL AND menu.activo=1 ORDER BY padre_posicion  ASC
+[Tue, 21 Apr 15 23:33:24 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:33:25 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:33:25 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:33:25 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:33:25 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:33:28 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:33:39 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:33:43 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:49:00 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:49:00 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:49:15 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:49:19 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:49:22 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:49:26 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:49:31 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:49:36 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:49:39 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:50:38 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:50:38 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:50:44 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:50:44 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:50:44 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:50:45 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:50:45 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:51:03 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:51:03 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:51:03 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.id IS NOT NULL AND menu.activo=1 ORDER BY padre_posicion  ASC
+[Tue, 21 Apr 15 23:51:53 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:51:53 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:51:53 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE recurso_id='17' AND visibilidad=1 LIMIT 1
+[Tue, 21 Apr 15 23:51:53 +0200][DEBUG] INSERT INTO menu (menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom) VALUES ('15','17','Vía 1','vias/vias/listarVias/1','2','fa-road','1','1','0')
+[Tue, 21 Apr 15 23:51:53 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE id = 17 LIMIT 1
+[Tue, 21 Apr 15 23:51:53 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:51:53 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:51:53 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:51:53 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:51:53 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:52:05 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:52:05 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:52:05 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE id = 17 LIMIT 1
+[Tue, 21 Apr 15 23:52:05 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.id IS NOT NULL AND menu.activo=1 ORDER BY padre_posicion  ASC
+[Tue, 21 Apr 15 23:52:11 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:52:11 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:52:12 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE id = 17 LIMIT 1
+[Tue, 21 Apr 15 23:52:12 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE recurso_id='17' AND visibilidad=1 AND id != '17' LIMIT 1
+[Tue, 21 Apr 15 23:52:12 +0200][DEBUG] SELECT COUNT(*) FROM menu WHERE  id = '17'
+[Tue, 21 Apr 15 23:52:12 +0200][DEBUG] SELECT COUNT(*) FROM menu WHERE  id = '17'
+[Tue, 21 Apr 15 23:52:12 +0200][DEBUG] UPDATE menu SET menu_id = '15',recurso_id = '17',menu = 'Vía 1',url = 'vias/vias/listarVias/1',posicion = '32',icono = 'fa-road',visibilidad = '1',custom = NULL WHERE  id = '17'
+[Tue, 21 Apr 15 23:52:12 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:52:12 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:52:12 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:52:12 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:52:12 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:52:18 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:52:18 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:52:18 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:52:18 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:52:18 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:52:23 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:53:33 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:54:19 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:54:26 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:54:35 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:54:35 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:54:38 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:54:38 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:54:38 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:54:38 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:54:38 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:54:48 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:54:48 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:54:48 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE id = 17 LIMIT 1
+[Tue, 21 Apr 15 23:54:48 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.id IS NOT NULL AND menu.activo=1 ORDER BY padre_posicion  ASC
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE id = 17 LIMIT 1
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE recurso_id='17' AND visibilidad=1 AND id != '17' LIMIT 1
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] SELECT COUNT(*) FROM menu WHERE  id = '17'
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] SELECT COUNT(*) FROM menu WHERE  id = '17'
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] UPDATE menu SET menu_id = '15',recurso_id = '17',menu = 'Vía 1',url = 'vias/vias/listarVia/1',posicion = '32',icono = 'fa-road',visibilidad = '1',custom = NULL WHERE  id = '17'
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:54:59 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:55:02 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:55:02 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:55:02 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:55:02 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:55:02 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Tue, 21 Apr 15 23:55:08 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:58:11 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:58:11 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:58:28 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:58:29 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:58:29 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 21 Apr 15 23:59:13 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:59:33 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:59:33 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:59:55 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:59:55 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 21 Apr 15 23:59:55 +0200][DEBUG] DESCRIBE `menu`

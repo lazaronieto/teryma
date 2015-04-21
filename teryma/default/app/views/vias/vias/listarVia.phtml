@@ -1,0 +1,64 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * @category app
+ * @package vews/vias
+ * @author Lázaro Nieto Aranda
+ * @date 21-abr-2015
+ * @time 23:40:37
+ */
+?>
+
+<?php View::flash(); ?>
+
+<div class="container shell-view">
+
+    <?php View::process($page_module, $page_title, $set_title); ?>
+    <div class="container-overflow">
+            
+        <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+            <thead>
+                <tr>
+                    <th></th>                        
+                    <th>VAGÓN</th>
+                    <th>CAJA 1</th>
+                    <th>CAJA 2</th>
+                    <th>TIPO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if($vagones) { ?>
+                    <?php $linea=1; ?>
+                    <?php foreach($vagones as $row): ?>
+                        <?php $tipo = Load::model('vias/tipo')->find($row->tipo_id); ?>
+                        <?php $cajas = Load::model('vias/caja')->find_by_sql("select * from caja where vagon_id = '$row->id'"); ?>
+                        <tr>
+                            <td><?php echo $linea; ?></td>
+                            <td><?php echo $row -> id_vagon; ?></td> 
+                            <?php if (count($cajas)==2){
+                                foreach ($cajas as $caja):?>
+                                    <td><?php echo $caja->id_caja; ?></td>
+                                <?php endforeach;
+                            }?>
+                            <?php if (count($cajas)==1){
+                                if($cajas->id_caja=='' ){echo'<td> --- </td>';}
+                                else{echo '<td>'.$cajas->id_caja.'</td>'; }
+                                echo'<td> --- </td>';
+                            }?>
+
+                            <td><?php echo $tipo -> tipo; ?></td>
+
+                        </tr>
+                        <?php $linea++ ?>
+                    <?php endforeach; ?>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>

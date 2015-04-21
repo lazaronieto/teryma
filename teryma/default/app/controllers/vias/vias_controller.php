@@ -43,6 +43,11 @@ class ViasController extends BackendController {
         //$this->vias = $vias -> getVias();
         $this->vias = Load::model('vias/vias')->getVias();
     }
+    
+    public function listarVia($via){
+		$this->page_title = 'Vía '.$via;
+		$this->vagones = Load::Model('vias/vagon')->find_all_by_sql("select * from vagon where vias_id = '$via'");
+	}
 
 
 }
