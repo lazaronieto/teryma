@@ -39,24 +39,29 @@ echo Tag::js('multi/jquery.multisortable'); //Adiciona un archivo javascript (/a
 				<ul id="v<?php echo $row->id; ?>" class="sortable" style="width:<?php echo $row->largo; ?>px; height:60px; list-style: none;">
                                     <?php foreach($row->getVagon() as $vag): ?>
                                         <?php $tipo = Load::model('vias/tipo')->find($vag->tipo_id); ?>
-                                        <?php //$cajas = Load::model('vias/caja')->ffind_by_sql("select * from caja where vagon_id = '$vag->id'"); ?>
-                                        <?php //$cajas->vagon_id=$vag->id ?>
-                                        <?php //if ($cajas->exists()){
-                                            $cajas = Load::model('vias/caja')->find_by_sql("select * from caja where vagon_id = '$vag->id'");//}
-                                            if ($cajas->id_caja=='') {
-                                                $cajas->id_caja='------';
-                                            }
-                                            //else{$cajas->id_caja='------';} ?>
+                                        <?php $cajas = Load::model('vias/caja')->find_by_sql("select * from caja where vagon_id = '$vag->id'"); ?>
 					<li style="cursor: pointer; display:inline-block;height: 60px; ">
                                             <table style="width:<?php echo $tipo->medida*3.333 ?>; margin-right:2px;">
                                                 <tr>
-                                                    <?php $cont =0; ?>
-                                                    <?php //foreach ($cajas as $caja):?>
-                                                    <td><?php echo $cajas->id_caja; ?></td>
-                                                    <?php $cont++; ?>
-                                                    <?php //endforeach;?>
+                                                    <?php $cont =0; $img=0;?>
+                                                    <?php if (count($cajas)==2){
+                                                        foreach ($cajas as $caja):?>
+                                                    <td><?php echo $caja->id_caja; ?></td>
+                                                    <?php $cont++; $img++?>
+                                                    <?php endforeach;}?>
+                                                    <?php if (count($cajas)==1 and ($tipo->tipo=="aleman" or $tipo->tipo=="portacontenedor")){
+                                                        if($cajas->id_caja=='' ){echo'<td> --- </td>';}
+                                                            else{echo '<td>'.$cajas->id_caja.'</td>'; $img=1;}
+                                                        echo'<td> --- </td>';
+                                                        $cont=2;
+                                                    }?>
+                                                    <?php if (count($cajas)==1 and ($tipo->tipo !=="aleman" and $tipo->tipo !=="portacontenedor")){
+                                                        if($cajas->id_caja=='' ){echo'<td> --- </td>';}
+                                                            else{echo '<td>'.$cajas->id_caja.'</td>'; $img=1;}
+                                                        $cont=1;
+                                                    }?>
                                                 </tr>
-                                                <tr><td colspan="<?php echo $cont ?>"><?php echo $tipo->tipo ?><?php //echo img_tag(“carro.gif”, “width: 100”, “border: 0”) ?></td></tr>
+                                                <tr><td colspan="<?php echo $cont ?>"><?php echo Html::img('vagones/'.$tipo->tipo.$img.'.png', $alt=NULL, 'width:'.$tipo->medida*3.333 ) ?><?php //echo img_tag(“carro.gif”, “width: 100”, “border: 0”) ?></td></tr>
                                                 <tr><td colspan="<?php echo $cont ?>"><?php echo $vag->id_vagon ?></td></tr>
                                             </table>
                                         </li>
