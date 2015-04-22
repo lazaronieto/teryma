@@ -37,7 +37,7 @@
                     <?php $linea=1; ?>
                     <?php foreach($vagones as $row): ?>
                         <?php $tipo = Load::model('vias/tipo')->find($row->tipo_id); ?>
-                        <?php $cajas = Load::model('vias/caja')->find_by_sql("select * from caja where vagon_id = '$row->id'"); ?>
+                        <?php $cajas = Load::model('vias/caja')->find_all_by_sql("select * from caja where vagon_id = '$row->id'"); ?>
                         <tr>
                             <td><?php echo $linea; ?></td>
                             <td><?php echo $row -> id_vagon; ?></td> 
