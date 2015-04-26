@@ -25,6 +25,8 @@ class Vagon extends ActiveRecord {
         $this->belongs_to('vias/vias');
         //Un vagón solo puede ser de un tipo
         $this->belongs_to('vias/tipo');
+        //un vagón puede tener varias cajas
+        $this->has_many('vias/caja');
     }
     
 }

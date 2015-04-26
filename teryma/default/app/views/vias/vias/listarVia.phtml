@@ -21,44 +21,76 @@
 
     <?php View::process($page_module, $page_title, $set_title); ?>
     <div class="container-overflow">
-            
-        <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
-            <thead>
+        <div class="">
+            <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+                <thead>
+                    <tr>
+                        <th></th>                        
+                        <th>VAGÓN</th>
+                        <th>CAJA 1</th>
+                        <th>CAJA 2</th>
+                        <th>TIPO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if($vagones) { ?>
+                        <?php $linea=1; ?>
+                        <?php foreach($vagones as $row): ?>
+                            <?php $tipo = Load::model('vias/tipo')->find($row->tipo_id); ?>
+                            <?php $cajas = $row->getCaja(); ?>
+                            <?php //$cajas = Load::model('vias/caja')->find_all_by_sql("select * from caja where vagon_id = '$row->id'"); ?>
+                            <tr>
+                                <td><?php echo $linea; ?></td>
+                                <td><?php echo $row -> id_vagon; ?></td> 
+                                <?php if (count($cajas)==2){
+                                    foreach ($cajas as $caja):?>
+                                        <td><?php echo $caja->id_caja; ?></td>
+                                    <?php endforeach;
+                                }?>
+                                
+                                <?php if (count($cajas)==1 and ($tipo->tipo=="aleman" or $tipo->tipo=="portacontenedor")){
+                                    foreach ($cajas as $caja):
+                                        echo '<td>'.$caja->id_caja.'</td>'; 
+                                    endforeach;
+                                    echo'<td> --- </td>';
+                                }?>
+                                        
+                                <?php if (count($cajas)==1 and ($tipo->tipo=='ingles')){
+                                    foreach ($cajas as $caja):
+                                        echo '<td>'.$caja->id_caja.'</td>'; $img=1;
+                                    endforeach;
+                                    echo'<td> --- </td>';
+                                }
+                                
+                                if (count($cajas)==0){
+                                    if($tipo->tipo=='aleman' || $tipo->tipo=='portacontenedor'){
+                                        echo'<td> --- </td><td> --- </td>';
+                                        $img=0; $cont=2;
+                                    } if($tipo->tipo=='ingles') {
+                                        echo'<td> --- </td><td> --- </td>';
+                                        $img=0; $cont=1;
+                                    }
+                                }?>
+                                        
+                                
+
+                                <td><?php echo $tipo -> tipo; ?></td>
+
+                            </tr>
+                            <?php $linea++ ?>
+                        <?php endforeach; ?>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="">
+            <table class="table table-responsive">
                 <tr>
-                    <th></th>                        
-                    <th>VAGÓN</th>
-                    <th>CAJA 1</th>
-                    <th>CAJA 2</th>
-                    <th>TIPO</th>
+                    <td style="text-align: center"><a href="http://localhost/teryma/teryma/vias/pdf/index/<?php echo $via; ?>/" target="_blank"><?php echo DwHtml::img("pdf.png", 'exportar a pdf', array('id'=>'pdf')); ?></a></td>
+                    <td style="text-align: center"><a href="http://localhost/teryma/teryma/vias/pdf/index/<?php echo $via; ?>/" target="_blank"><?php echo DwHtml::img("excel.png", 'exportar a excel', array('id'=>'excel')); ?></a></td>
+                    <td style="text-align: center"><a href="http://localhost/teryma/teryma/vias/pdf/index/<?php echo $via; ?>/" target="_blank"><?php echo DwHtml::img("print.png", 'imprimir', array('id'=>'print')); ?></a></td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php if($vagones) { ?>
-                    <?php $linea=1; ?>
-                    <?php foreach($vagones as $row): ?>
-                        <?php $tipo = Load::model('vias/tipo')->find($row->tipo_id); ?>
-                        <?php $cajas = Load::model('vias/caja')->find_all_by_sql("select * from caja where vagon_id = '$row->id'"); ?>
-                        <tr>
-                            <td><?php echo $linea; ?></td>
-                            <td><?php echo $row -> id_vagon; ?></td> 
-                            <?php if (count($cajas)==2){
-                                foreach ($cajas as $caja):?>
-                                    <td><?php echo $caja->id_caja; ?></td>
-                                <?php endforeach;
-                            }?>
-                            <?php if (count($cajas)==1){
-                                if($cajas->id_caja=='' ){echo'<td> --- </td>';}
-                                else{echo '<td>'.$cajas->id_caja.'</td>'; }
-                                echo'<td> --- </td>';
-                            }?>
-
-                            <td><?php echo $tipo -> tipo; ?></td>
-
-                        </tr>
-                        <?php $linea++ ?>
-                    <?php endforeach; ?>
-                <?php } ?>
-            </tbody>
-        </table>
+            </table>            
+        </div>
     </div>
 </div>

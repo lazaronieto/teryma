@@ -130,9 +130,11 @@ small.help-error { display: none;}
 .lm-placeholder {
 	border: 3px dotted red;
 	width: 50px;
-	height: 60px !important;
+	height: 20px !important;
 	background-color: #078cd9;
 	color: red;
+        display:inline-block
     } 
 .lm-placeholder::before{content: ">---<";}
 li.selected { outline: 1px solid red; }
+.sortable td {text-align: center;}

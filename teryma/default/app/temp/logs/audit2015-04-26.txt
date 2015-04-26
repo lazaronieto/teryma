@@ -1,0 +1,4 @@
+[Sun, 26 Apr 15 21:05:53 +0200][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Sun, 26 Apr 15 21:05:53 +0200][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Sun, 26 Apr 15 21:36:14 +0200][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Sun, 26 Apr 15 21:36:14 +0200][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.

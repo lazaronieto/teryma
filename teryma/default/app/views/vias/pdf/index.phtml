@@ -1,0 +1,72 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * @category app
+ * @package views/pdf
+ * @author Lázaro Nieto Aranda
+ * @date 26-abr-2015
+ * @time 17:38:39
+ */
+
+Load::lib('fpdf/fpdf');
+
+$pd1=new FPDF();
+$pd1->AddPage();
+// Colores, ancho de línea y fuente en negrita
+$pd1->SetFillColor(255,0,0);
+$pd1->SetTextColor(255);
+$pd1->SetDrawColor(0,0,0);
+$pd1->SetLineWidth(.3);
+$pd1->SetFont('Arial','B');
+// Cabecera
+$w = array(30, 30, 30, 30, 30);
+$header = array('via'.$via, 'vagon', 'caja 1', 'caja 2', 'tipo');
+for($i=0;$i<count($header);$i++){
+    $pd1->Cell($w[$i],7,$header[$i],1,0,'C',true);
+}
+$pd1->Ln();
+//Restauración de colores y fuentes
+$pd1->SetFillColor(224,235,255);
+$pd1->SetTextColor(0);
+$pd1->SetFont('');
+// Datos
+$fill = false;
+$linea=1;
+$vagones = Load::Model('vias/vagon')->find_all_by_sql("select * from vagon where vias_id = '$via'");
+foreach($vagones as $row):
+    $tipo = Load::model('vias/tipo')->find($row->tipo_id);
+    $cajas = $row->getCaja();
+    $pd1->Cell($w[0],6,$linea,'LR',0,'C',$fill);
+    $pd1->Cell($w[1],6,$row->id_vagon,'LR',0,'C',$fill);
+    if (count($cajas)==2){
+        foreach ($cajas as $caja):
+            $i=2;
+            $pd1->Cell($w[$i],6,$caja->id_caja,'LR',0,'C',$fill);
+            $i++;
+         endforeach;
+    }
+    if (count($cajas)==1) {
+        foreach ($cajas as $caja):
+            $pd1->Cell($w[2],6,$caja->id_caja,'LR',0,'C',$fill);
+         endforeach;
+         $pd1->Cell($w[3],6,'---','LR',0,'C',$fill);
+    }
+    if (count($cajas)==0) {
+        $pd1->Cell($w[2],6,'---','LR',0,'C',$fill);
+        $pd1->Cell($w[3],6,'---','LR',0,'C',$fill);
+    }
+    $pd1->Cell($w[4],6,$tipo -> tipo,'LR',0,'C',$fill);
+    $fill = !$fill;
+    $pd1->Ln();
+    $linea++;
+endforeach;
+// Línea de cierre
+$pd1->Cell(array_sum($w),0,'','T');
+
+$pd1->Output();
