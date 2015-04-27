@@ -21,8 +21,8 @@
 
     <?php View::process($page_module, $page_title, $set_title); ?>
     <div class="container-overflow">
-        <div class="">
-            <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+        <div class="print">
+            <table class="table table-bordered table-hover table-striped table-condensed table-responsive" id="via">
                 <thead>
                     <tr>
                         <th></th>                        
@@ -87,10 +87,20 @@
             <table class="table table-responsive">
                 <tr>
                     <td style="text-align: center"><a href="http://localhost/teryma/teryma/vias/pdf/index/<?php echo $via; ?>/" target="_blank"><?php echo DwHtml::img("pdf.png", 'exportar a pdf', array('id'=>'pdf')); ?></a></td>
-                    <td style="text-align: center"><a href="http://localhost/teryma/teryma/vias/pdf/index/<?php echo $via; ?>/" target="_blank"><?php echo DwHtml::img("excel.png", 'exportar a excel', array('id'=>'excel')); ?></a></td>
-                    <td style="text-align: center"><a href="http://localhost/teryma/teryma/vias/pdf/index/<?php echo $via; ?>/" target="_blank"><?php echo DwHtml::img("print.png", 'imprimir', array('id'=>'print')); ?></a></td>
+                    <td style="text-align: center"><a href="http://localhost/teryma/teryma/vias/excel/index/<?php echo $via; ?>/" target="_blank"><?php echo DwHtml::img("excel.png", 'exportar a excel', array('id'=>'excel')); ?></a></td>
+                    <td style="text-align: center"><?php echo DwHtml::img("print.png", 'imprimir', array('id'=>'printer', 'onclick'=>'print()')); ?></td>
                 </tr>
             </table>            
         </div>
     </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#printer").bind("click",function()
+	{
+		$("#via").printArea();
+	});
+});
+
+</script>

@@ -8,7 +8,7 @@
 
 /**
  * @category app
- * @package views/pdf
+ * @package views/vias
  * @author Lázaro Nieto Aranda
  * @date 26-abr-2015
  * @time 17:38:39
@@ -45,8 +45,8 @@ foreach($vagones as $row):
     $pd1->Cell($w[0],6,$linea,'LR',0,'C',$fill);
     $pd1->Cell($w[1],6,$row->id_vagon,'LR',0,'C',$fill);
     if (count($cajas)==2){
+        $i=2;
         foreach ($cajas as $caja):
-            $i=2;
             $pd1->Cell($w[$i],6,$caja->id_caja,'LR',0,'C',$fill);
             $i++;
          endforeach;
