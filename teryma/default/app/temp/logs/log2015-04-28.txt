@@ -1,0 +1,4 @@
+[Tue, 28 Apr 15 00:02:00 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 28 Apr 15 00:02:00 +0200][DEBUG] DESCRIBE `menu`
+[Tue, 28 Apr 15 00:02:34 +0200][DEBUG] DESCRIBE `usuario`
+[Tue, 28 Apr 15 00:02:34 +0200][DEBUG] DESCRIBE `menu`
