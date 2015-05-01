@@ -59,7 +59,6 @@ class ViasController extends BackendController {
             $ordenVia1 = explode('_', $suborden[0]);//separo la vía de los vagones en la primera vía
             $ordenVia2 = explode('_', $suborden[1]);//separo la vía de los vagones en la segunda vía
             $ordenVagonVia1 = explode(',',$ordenVia1[1]);// las id en formato va-1 de los vagones primera vía
-            $ordenVagonVia2 = explode(',',$ordenVia2[1]);// las id en formato va-1 de los vagones segunda vía
             $or=1;
             foreach($ordenVagonVia1 as $vag):
                 $vagon=$this->vag = Load::model('vias/vagon')->find(substr($vag, 3));
@@ -69,13 +68,22 @@ class ViasController extends BackendController {
                 $or++;
             endforeach;
             $or=1;
-            foreach($ordenVagonVia2 as $vag):
-                $vagon=$this->vag = Load::model('vias/vagon')->find(substr($vag, 3));
-                $vagon->vias_id = substr($ordenVia2[0], 2) ;
-                $vagon->orden = $or;
-                $vagon->update();
-                $or++;
-            endforeach;
+            
+            try{
+            if(isset($ordenVia2[1])){
+                $ordenVagonVia2 = explode(',',$ordenVia2[1]);
+                foreach($ordenVagonVia2 as $vag):
+                    $vagon=$this->vag = Load::model('vias/vagon')->find(substr($vag, 3));
+                    $vagon->vias_id = substr($ordenVia2[0], 2) ;
+                    $vagon->orden = $or;
+                    $vagon->update();
+                    $or++;
+                endforeach;
+            }
+            }
+            catch (Exception $e){
+                
+            }
             Redirect::toAction('listar');
         //}
     }

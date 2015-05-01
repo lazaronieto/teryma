@@ -41,7 +41,6 @@ function orden(or, ord){
         $texto+= $(this).attr('id')+',';
     });
     $texto=$texto.slice(0, -1);
-    $('#resultado').append($texto+"<br/>");
     location.href='http://localhost/teryma/teryma/vias/vias/ordenar/'+$texto;
 }
 </script>
@@ -90,12 +89,7 @@ $(function() {
 
 });
 
-	</script>
-
-        <div class="hiden" style="visibility: hidden">
-            <?php echo Ajax::form("") //especificamos el id del div que se actualizará luego del envio ajax ?>
-            <?php echo Form::text('texto') ?>
-        </div>
+</script>
 <div class="container shell-view">
 
     <?php View::process($page_module, $page_title, $set_title); ?>
@@ -160,28 +154,6 @@ $(function() {
 			<div class="row separador" style="width:100%; height:30px;"></div>
         <?php endforeach; ?>
     <?php } ?>
-   
-                        <div id="resultado" class="row"></div>
-            
-            <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
-                <thead>
-                    <tr>
-                        <th>VÍA</th>                        
-                        <th data-order="largo">LONGITUD</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if($vias) { ?>
-                        <?php foreach($vias as $row): ?>
-                            <tr>
-                                <td><?php echo $row -> id; ?></td>                                
-                                <td><?php echo $row -> largo; ?></td>
-
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php } ?>
-                </tbody>
-            </table>
   
 </div>
  
