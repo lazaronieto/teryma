@@ -128,13 +128,34 @@ small.help-error { display: none;}
 .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] { margin-top: 2px; }
 
 .lm-placeholder {
-	border: 3px dotted red;
-	width: 50px;
+	border: 1px dotted graytext;
+	width: 125px;
+        text-align: center;
 	height: 20px !important;
-	background-color: #078cd9;
+	background-color: #ccccff;
 	color: red;
-        display:inline-block
+        display:inline-block;
     } 
 .lm-placeholder::before{content: ">---<";}
 li.selected { outline: 1px solid red; }
-.sortable td {text-align: center;}
+.cont td {text-align: center;}
+.cont .sort-handle {
+        display: none;
+}
+ul .ui-selected .sort-handle{
+        display: inline;
+        padding: 0 0.5em;
+        cursor: pointer;
+}
+.cont li.ui-selected {
+        background-color: #8888cc;
+        color: white;
+        font-weight: bold;
+        background-image: none;
+}
+.cont li.ui-selecting {
+        background-color: #ccccff;
+        color: white;
+        background-image: none;
+}
+ 

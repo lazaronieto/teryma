@@ -27,52 +27,75 @@
         });
     });
 </script>
-
-<script type="text/javascript">
-    $(function($){
-        $('ul.sortable').multisortable();
-				
-        $("ul").sortable({
-            connectWith : ['ul'],
-            opacity: 0.3,
-            //placeholder: 'highlight',
-            placeholder: "lm-placeholder", revert: true,
-            forcePlaceholderSize: 'true', 
-            helper: "clone",
-            delay: 600,
-            update : function(event, ui) {
-                var or, ord;
-                if (ui.sender){
-                    or = ui.sender.attr('id');
-                } else {
-                    or = this.id;
-                }
-                ord = ui.item.parent().attr('id');
-                orden(or, ord);
-            }
-        });
-              
-        $( "li" ).disableSelection();
-
-        function orden(via1,via2){
-            var ordenElementos1 = $('#'+via1).sortable("toArray").toString();
-            $('#resultado').append(via1+"->"+ordenElementos1+"<br/>");
-            var ordenElementos2 = $('#'+ via2).sortable("toArray").toString();
-            $('#resultado').append(via2+"->"+ordenElementos2+"<br/>");
-            //$('#resultado').append(via1+"->"+$('#'+ via2).sortable("toArray")[1]+"<br/>");
-			//$('li.selected').removeClass('selected');
-        }
-			
-        $('.separador').click(function(){
-            $('li.selected').removeClass('selected');
-        });
+<script>
+function orden(or, ord){
+    $('li').removeClass('ui-selected');
+    var $texto =ord+'_';
+    $("#"+ord+" li").each(function(){
+        $texto+= $(this).attr('id')+',';
     });
-			
-    $('.separador').click(function(){
-        $('li.selected').removeClass('selected');
+    $texto=$texto.slice(0, -1);
+    $texto+='y';
+    $texto +=or+'_';
+    $("#"+or+" li").each(function(){
+        $texto+= $(this).attr('id')+',';
     });
+    $texto=$texto.slice(0, -1);
+    $('#resultado').append($texto+"<br/>");
+    location.href='http://localhost/teryma/teryma/vias/vias/ordenar/'+$texto;
+}
 </script>
+<script>
+$(function() {
+        var or, ord;
+        $('.cont').selectable({
+                cancel: '.sort-handle'
+        }).sortable({
+                items: "> li",
+                connectWith : 'ul',
+                placeholder: "lm-placeholder", 
+                revert: true,
+                forcePlaceholderSize: 'true', 
+                handle: '.sort-handle',
+                helper: function(e, item) {
+                        if ( ! item.hasClass('ui-selected') ) {
+                                item.parent().children('.ui-selected').removeClass('ui-selected');
+                                item.addClass('ui-selected');
+                        }
 
+                        var selected = item.parent().children('.ui-selected').clone();
+                        item.data('multidrag', selected).siblings('.ui-selected').remove();
+                        return $('<li/>').append(selected);
+                },
+                stop: function(e, ui) {
+
+                        if (ui.sender){
+                            or = ui.sender.attr('id');// id de la vía que sale
+                        } else {
+                            or = this.id;
+                        }
+                        ord = ui.item.parent().attr('id');//id de la vía que recibe
+                        $('ul').sortable('refresh');
+
+                        var selected = ui.item.data('multidrag');
+                        ui.item.after(selected);
+                        ui.item.remove();
+                        if (confirm('guardar movimiento?')) {
+                                orden(or, ord);
+                        }else{ location.reload();}
+
+                        $('li').removeClass('ui-selected');
+                }
+        });
+
+});
+
+	</script>
+
+        <div class="hiden" style="visibility: hidden">
+            <?php echo Ajax::form("") //especificamos el id del div que se actualizará luego del envio ajax ?>
+            <?php echo Form::text('texto') ?>
+        </div>
 <div class="container shell-view">
 
     <?php View::process($page_module, $page_title, $set_title); ?>
@@ -81,12 +104,14 @@
 	<?php foreach($vias as $row): ?>
             <div class="separador">Vía <?php echo $row->id; ?></div>
             <div class="row" style="width:<?php echo $row->largo *3.333; ?>px; height:60px; padding-bottom:1px; border: 1px solid #7C7C7C; border-bottom: 3px solid black;" id="via<?php echo $row->id; ?>">
-				<ul id="v<?php echo $row->id; ?>" class="sortable" style="width:<?php echo $row->largo; ?>px; height:60px; list-style: none;">
-                                    <?php foreach($row->getVagon() as $vag): ?>
+				<ul id="v-<?php echo $row->id; ?>" class="cont" style="width:<?php echo $row->largo; ?>px; height:60px; list-style: none;">
+                                    <?php $vagones = Load::Model('vias/vagon')->find_all_by_sql("select * from vagon where vias_id = '$row->id' order by orden"); ?>
+                                    <?php foreach($vagones as $vag): ?>
                                         <?php $tipo = Load::model('vias/tipo')->find($vag->tipo_id); ?>
                                         <?php $cajas = Load::model('vias/caja')->find_all_by_sql("select * from caja where vagon_id = '$vag->id'"); ?>
-					<li id="va<?php echo $vag->id; ?>" style="cursor: pointer; display:inline-block;height: 60px; ">
-                                            <table style="width:<?php echo $tipo->medida*3.333 ?>; margin-right:2px; display:inline-block;">
+					<li id="va-<?php echo $vag->id; ?>" style=" display:inline-block;height: 60px; ">
+                                            <span class="sort-handle">&#8225;</span>
+                                            <table style="width:<?php echo $tipo->medida*3.333 ?>; margin-right:1px; display:inline-block;">
                                                 <tr>
                                                     
                                                     <?php $cont =0; $img=0;?>
@@ -159,4 +184,4 @@
             </table>
   
 </div>
-
+ 
