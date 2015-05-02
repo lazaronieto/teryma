@@ -857,3 +857,13 @@
 [Fri, 01 May 15 22:18:52 +0200][DEBUG] DESCRIBE `backup`
 [Fri, 01 May 15 22:18:52 +0200][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
 [Fri, 01 May 15 22:18:52 +0200][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Fri, 01 May 15 22:25:10 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 01 May 15 22:25:10 +0200][DEBUG] DESCRIBE `backup`
+[Fri, 01 May 15 22:25:10 +0200][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Fri, 01 May 15 22:25:10 +0200][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Fri, 01 May 15 22:25:10 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 01 May 15 22:25:13 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 01 May 15 22:25:13 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 01 May 15 22:25:19 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 01 May 15 22:25:19 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 01 May 15 22:25:19 +0200][DEBUG] DESCRIBE `menu`

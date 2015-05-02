@@ -1,0 +1,2 @@
+[Sat, 02 May 15 08:06:43 +0200][INFO] [/sistema/configuracion/databases/][admin][::1] Se ha actualizado el archivo de conexión del sistema.
+[Sat, 02 May 15 08:06:43 +0200][INFO] [/sistema/configuracion/databases/][admin][::1] Se ha actualizado el archivo de conexión del sistema.

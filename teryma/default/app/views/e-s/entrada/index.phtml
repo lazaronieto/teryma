@@ -1,0 +1,40 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * @category app
+ * @package views/e-s
+ * @author Lázaro Nieto Aranda
+ * @date 02-may-2015
+ * @time 8:27:52
+ */
+
+View::flash(); ?>
+
+<div class="container shell-view">
+    <?php echo DwForm::open(); ?>
+    <div class="row">
+        <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-4">
+            <?php echo DwForm::date('tren.fecha_at',array('class'=>'input-required'), date('d-m-Y'), 'Fecha'); ?> 
+            <?php echo DwForm::time('tren.hora_at',array('class'=>'input-required'), date("H:i:s"), 'Hora'); ?>
+            <?php echo DwForm::number('tren.vagones', array('class'=>'input-required'), null, 'Nª de vagones'); ?>
+            <?php echo DwForm::select('tren.tipo',array('salida'=>'Salida', 'entrada'=>'Entrada'), array('class'=>'input-required'),'Salida', 'Tipo'); ?>
+            <?php echo DwForm::select('tren.vias_id',array('1'=>'1', '2'=>'2'), array('class'=>'input-required'),'1','Vía'); ?>
+
+            <div class="form-actions">
+                    <?php echo DwForm::send('Guardar tren'); ?>
+                    <?php echo DwForm::cancel(); ?>
+            </div>
+        </div>
+        
+    </div>
+    <?php echo DwForm::close(); ?>
+    
+</div>
+
