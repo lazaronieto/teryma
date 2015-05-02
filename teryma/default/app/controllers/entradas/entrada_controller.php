@@ -13,7 +13,7 @@
  * @date 02-may-2015
  * @time 8:12:28
  */
-Load::models('e-s/tren'); //cargamos el modelo
+Load::models('entradas/tren'); //cargamos el modelo
 class EntradaController extends BackendController {
     
     /**
