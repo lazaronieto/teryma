@@ -1,0 +1,81 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * @category app
+ * @package views/entrada
+ * @author Lázaro Nieto Aranda
+ * @date 04-may-2015
+ * @time 15:52:53
+ */
+
+View::flash(); ?>
+<?php View::process($page_module, $page_title, $set_title); ?>
+<div class="container shell-view">
+    <div class="row">
+        <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-4">
+            <?php echo DwForm::open('', '', array('id'=>'form-vagon', 'class'=>'')); ?>
+            <?php echo DwForm::text('vagon.id_vagon', array('class'=>'input-required'), null, 'Nª de vagon'); ?>
+            <?php echo DwForm::hidden('vagon.vias_id',null,Session::get('via')); ?>
+            <?php echo DwForm::hidden('vagon.orden',null,Session::get('orden')); ?>
+            <?php echo DwForm::select('vagon.estado',array('útil'=>'útil', 'inutil'=>'inutil'), array('class'=>'input-required'),'útil','Estado'); ?>
+            <div class="col-md-2">
+            <?php echo DwForm::fieldset("<a id='add-caja1' href='#form-add-caja' class='btn btn-default' data-toggle='modal'><i class='fa fa-check fa-pd-expand'></i>Agregar caja</a>"); ?>
+            </div>
+        </div>
+        <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-4">
+            <?php echo DwForm::select('vagon.tipo_id',array(''=>'', '1'=>'ingles', '2'=>'aleman'), array('class'=>'input-required'),'', 'Tipo'); ?>
+            <div class="form-actions">
+                <?php echo DwForm::send(); ?>
+                <?php echo DwForm::cancel(); ?>
+            </div>
+            <?php echo DwForm::close(); ?>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="form-add-caja" role="dialog" aria-labelledby="form-add-config" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <?php echo DwForm::open('', '', array('id'=>'form-caja', 'class'=>'')); ?>    
+            <div class="modal-header">                
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>Agregar caja</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <?php echo DwForm::number('caja.id_caja', array('class'=>'input-lowerinput-required','min'=>"0" ,'step'=>"0"), null, 'Nª de caja'); ?>
+                        <?php echo DwForm::hidden('caja.carga',null, 'entrada'); ?>
+                    </div>
+                    <div class="col-md-5">
+                        <?php echo DwForm::hidden('caja.vagon_id',null,Session::get('vagon')); ?>
+                        <?php echo DwForm::select('caja.tipo',array(''=>'', 'TF'=>'TF', 'mega'=>'mega', 'contenedor'=>'contenedor'), array('class'=>'input-lower input-required'),'', 'Tipo de caja'); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <?php echo DwForm::submit("Guardar", array('class'=>'btn btn-primary','id'=>'boton')); ?>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            </div>
+            <?php echo DwForm::close(); ?>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $("#boton").click(function(){            
+            $('#caja_id_caja').attr('value','');
+            $("#caja_tipo").attr('value','');
+            $("#form-add-caja").modal('toggle');
+            return true;
+        });
+    });
+</script>

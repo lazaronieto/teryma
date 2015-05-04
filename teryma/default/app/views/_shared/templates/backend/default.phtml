@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -8,7 +9,7 @@
         <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
         <meta name="robots" content="noindex,nofollow" /> 
         <link rel="shortcut icon" href="<?php echo PUBLIC_PATH; ?>img/favicon.ico" type="image/x-icon" />
-        <?php Tag::css('bootstrap/bootstrap'); ?>
+        <?php Tag::css('bootstrap/bootstrap.min'); ?>
         <?php Tag::css('bootstrap/bootstrap-theme.min'); ?>        
         <?php Tag::css('bootstrap/bootstrap-datetimepicker.min'); ?>
         <?php Tag::css('bootstrap/typehead'); ?>
@@ -16,7 +17,6 @@
         <?php Tag::css('file-upload/jquery.fileupload-ui'); ?>
         <?php Tag::css('font-awesome.min'); ?>        
         <?php Tag::css('backend/base'); ?>
-        
         <?php Tag::css('backend/style'); ?>
         <?php Tag::css('backend/themes/'.SKIN.'/'.SKIN); ?>
         <?php echo Html::includeCss(); ?>        
@@ -27,12 +27,9 @@
             textarea, select, input[type="text"], input[type="search"], .uneditable-input { text-transform: uppercase; font-size: 13px }
             <?php } ?>                          
         </style>
-        <?php //echo Tag::js('jquery/jquery.min').PHP_EOL; ?>
-        <?php
-        echo Tag::js('multi/jquery');
-        echo Tag::js('multi/jquery-ui-ui');
-        //echo Tag::js('multi/jquery.multisortable');
-        ?>
+        <?php echo Tag::js('jquery/jquery.min').PHP_EOL; ?>  
+        <?php echo Tag::js('multi/jquery-2.1.1'); ?>
+        <?php echo Tag::js('multi/jquery-ui'); ?>
        
         <?php echo Tag::js('jquery/ui/jquery.ui.widget'); ?>
         <?php echo Tag::js('jquery/jquery-file-upload/jquery.iframe-transport'); ?>
@@ -73,14 +70,13 @@
         <?php echo Tag::js('moment/moment.min').PHP_EOL; ?>        
         <?php echo Tag::js('moment/lang/es').PHP_EOL; ?>        
         <?php echo Tag::js('bootstrap/bootstrap.min').PHP_EOL; ?>
-        <?php echo Tag::js('bootstrap/bootstrap-datetimepicker.min3').PHP_EOL; ?>                
+        <?php echo Tag::js('bootstrap/bootstrap-datetimepicker.min').PHP_EOL; ?>                
         <?php echo Tag::js('bootstrap/bootstrap.typehead.min').PHP_EOL; ?>
         <?php echo Tag::js('jquery/jquery.kumbiaphp').PHP_EOL; ?>
         <?php echo Tag::js('jquery/jquery.keyfilter').PHP_EOL; ?>
         <?php echo Tag::js('jquery/jquery.kgrid').PHP_EOL; ?>
         <?php echo Tag::js('jquery/jquery.kload').PHP_EOL; ?>        
-        <?php echo Tag::js('jquery/jquery.spin').PHP_EOL; ?>  
-        <?php echo Tag::js('jquery/jquery.PrintArea').PHP_EOL; ?>
+        <?php echo Tag::js('jquery/jquery.spin').PHP_EOL; ?>        
         <?php echo Tag::js('html5shiv').PHP_EOL; ?>        
         
         <?php echo Tag::js('backend').PHP_EOL; ?>

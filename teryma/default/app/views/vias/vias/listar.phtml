@@ -14,14 +14,7 @@
  */
  ?>
  <?php View::flash(); ?>
-<script type="text/javascript">
-    $(function() {
-        $('table').kgrid({
-            order_to:   $.KumbiaPHP.publicPath+"vias/vias/listar/",
-            order_attr: '<?php echo (APP_AJAX) ? 'class="js-link js-spinner"' : ''; ?>'
-        });
-    });
-</script>
+
 <script>
 function orden(or, ord){
     $('li').removeClass('ui-selected');
@@ -69,7 +62,7 @@ $(function() {
                             or = this.id;
                         }
                         ord = ui.item.parent().attr('id');//id de la vía que recibe
-                        $('ul').sortable('refresh');
+                        //$('ul').sortable('refresh');
 
                         var selected = ui.item.data('multidrag');
                         ui.item.after(selected);
@@ -85,15 +78,15 @@ $(function() {
 });
 
 </script>
-<div class="container shell-view">
+<div class="blanco">
 
     <?php View::process($page_module, $page_title, $set_title); ?>
 
     <?php if($vias) { ?>
 	<?php foreach($vias as $row): ?>
             <div class="separador">Vía <?php echo $row->id; ?></div>
-            <div class="row" style="width:<?php echo $row->largo *3.333; ?>px; height:60px; padding-bottom:1px; border: 1px solid #7C7C7C; border-bottom: 3px solid black;" id="via<?php echo $row->id; ?>">
-				<ul id="v-<?php echo $row->id; ?>" class="cont" style="width:<?php echo $row->largo; ?>px; height:60px; list-style: none;">
+            <div class="vias" style="width:<?php echo $row->largo *3.333; ?>px; height:60px; padding-bottom:1px; border: 1px solid #7C7C7C; border-bottom: 3px solid black;" id="via<?php echo $row->id; ?>">
+				<ul id="v-<?php echo $row->id; ?>" class="cont" style="width:<?php echo $row->largo*3.333; ?>px; height:60px; list-style: none;">
                                     <?php $vagones = Load::Model('vias/vagon')->find_all_by_sql("select * from vagon where vias_id = '$row->id' order by orden"); ?>
                                     <?php foreach($vagones as $vag): ?>
                                         <?php $tipo = Load::model('vias/tipo')->find($vag->tipo_id); ?>
