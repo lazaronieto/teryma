@@ -10,17 +10,15 @@
  * @category app
  * @package views/entradas
  * @author Lázaro Nieto Aranda
- * @date 02-may-2015
- * @time 8:27:52
+ * @date 05-may-2015
+ * @time 11:16:05
  */
 
 View::flash(); ?>
 <?php View::process($page_module, $page_title, $set_title); ?>
 <div class="container shell-view">
-    
-    
     <div class="row">
-        <?php echo DwForm::open('', '', array('id'=>'form-tren', 'class'=>'')); ?>
+        <?php echo DwForm::open('', '', array('id'=>'form-salida', 'class'=>'')); ?>
         <div class="col-md-1">&nbsp;</div>
         <div class="col-md-4">
             <?php echo DwForm::date('tren.fecha_at',array('class'=>'input-required'), date("Y-m-d"), 'Fecha'); ?>
@@ -30,7 +28,7 @@ View::flash(); ?>
         <div class="col-md-1">&nbsp;</div>
         <div class="col-md-4">
             <?php echo DwForm::number('tren.vagones', array('class'=>'input-required','min'=>"0" ,'step'=>"0"), null, 'Nª de vagones'); ?>
-            <?php echo DwForm::hidden('tren.tipo',null,'entrada'); ?>
+            <?php echo DwForm::hidden('tren.tipo', null,'salida'); ?>
             <?php echo DwForm::select('tren.vias_id',array('1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5'), array('class'=>'input-required'),'1','Vía'); ?>
             <div class="form-actions">
                 <?php echo DwForm::send('Guardar tren'); ?>

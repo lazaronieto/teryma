@@ -10,11 +10,11 @@
  * @category app
  * @package models/entradas
  * @author Lázaro Nieto Aranda
- * @date 02-may-2015
- * @time 12:00:51
+ * @date 05-may-2015
+ * @time 10:42:10
  */
 
-class Tren extends ActiveRecord {
+class Composicion extends ActiveRecord {
     
      //Se desabilita el logger para no llenar el archivo de "basura"
     public $logger = FALSE;

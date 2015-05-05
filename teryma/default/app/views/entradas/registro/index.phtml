@@ -1,0 +1,118 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * @category app
+ * @package views/entradas
+ * @author Lázaro Nieto Aranda
+ * @date 05-may-2015
+ * @time 15:10:57
+ */
+
+View::flash(); ?>
+<?php View::process($page_module, $page_title, $set_title); ?>
+<div class="container shell-view">
+    <div class="row">
+        <?php echo DwForm::open('', '', array('id'=>'form-registro', 'class'=>'')); ?>
+        <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-4">
+            <?php echo DwForm::date('fecha',array('class'=>'input-required'), date("Y-m-d"), 'Fecha'); ?>
+        </div>
+        <div class="form-actions">
+                <?php echo DwForm::submit('mostrar'); ?>
+            </div>
+        <?php echo DwForm::close(); ?>
+    </div>
+    <div class="container-overflow">
+        <?php if(isset($registro)) { ?>
+        <div class="print">
+            <table class="table table-bordered table-hover table-striped table-condensed table-responsive" id="tabla">
+                <thead>
+                    <tr>
+                        <th>TIPO</th>
+                        <th>VIA</th>
+                        <th> HORA </th>
+                        <th>INGLES</th>
+                        <th>ALEMAN</th>
+                        <th>AUTOS</th>
+                        <th>PORTA-CONT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <?php $linea=1; $num=0;?>
+                    <?php foreach($registro as $row): ?>
+                        <tr>
+                            <td><?php echo $row->tipo; ?></td>
+                            <td><?php echo $row->vias_id; ?></td>
+                            <td><?php echo $row->hora_at; ?></td>
+                            <td>
+                                <?php $dato=Load::model('entradas/composicion')->find_all_by_sql("select id from composicion where tren_id = $row->id and vagon_id IN (select id from vagon where tipo_id = 1 ); "); 
+                                foreach($dato as $ro):
+                                    $num++;
+                                endforeach;
+                                echo $num;
+                                $num=0;
+                                ?>
+                            </td>
+                            <td>
+                                <?php $dato=Load::model('entradas/composicion')->find_all_by_sql("select id from composicion where tren_id = $row->id and vagon_id IN (select id from vagon where tipo_id = 2 ); "); 
+                                foreach($dato as $ro):
+                                    $num++;
+                                endforeach;
+                                echo $num;
+                                $num=0;
+                                ?>
+                            </td>
+                            <td>
+                                <?php $dato=Load::model('entradas/composicion')->find_all_by_sql("select id from composicion where tren_id = $row->id and vagon_id IN (select id from vagon where tipo_id = 3 ); "); 
+                                foreach($dato as $ro):
+                                    $num++;
+                                endforeach;
+                                echo $num;
+                                $num=0;
+                                ?>
+                            </td>
+                            <td>
+                                <?php $dato=Load::model('entradas/composicion')->find_all_by_sql("select id from composicion where tren_id = $row->id and vagon_id IN (select id from vagon where tipo_id = 4 ); "); 
+                                foreach($dato as $ro):
+                                    $num++;
+                                endforeach;
+                                echo $num;
+                                $num=0;
+                                ?>
+                            </td>
+                        </tr>
+                        <?php $linea++ ?>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="">
+            <table class="table table-responsive">
+                <tr>
+                    <td style="text-align: center"><a href="#" target="_blank"><?php echo DwHtml::img("pdf.png", 'exportar a pdf', array('id'=>'pdf')); ?></a></td>
+                    <td style="text-align: center"><a href="#" target="_blank"><?php echo DwHtml::img("excel.png", 'exportar a excel', array('id'=>'excel')); ?></a></td>
+                    <td style="text-align: center"><?php echo DwHtml::img("print.png", 'imprimir', array('id'=>'printer', 'onclick'=>'printt()')); ?></td>
+                </tr>
+            </table>            
+        </div>
+        <?php }else {echo 'MIERDA';} ?>
+    </div>
+</div>
+<script type="text/javascript">
+function printt () {
+  var divToPrint=document.getElementById('tabla');
+  newWin= window.open("","","height=100%");
+  newWin.document.write(divToPrint.outerHTML);
+//  var nuevo=newWin.document.getElementById('via');
+//  nuevo.style.width = 100%;
+  newWin.print();
+  newWin.close();
+  }
+</script>

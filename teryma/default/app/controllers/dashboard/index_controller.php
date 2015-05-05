@@ -14,7 +14,7 @@ class IndexController extends BackendController {
     public $page_module = 'Dashboard';
     
     public function index() { 
-        
+        Redirect::to('vias/vias/index');
     }
 
 }

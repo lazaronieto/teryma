@@ -166,3 +166,6 @@ ul .ui-selected .sort-handle{
     background-color: white;
     width: 1300px !important;
 }
+#tabla tr td ,#tabla tr th{
+    text-align: center;
+}

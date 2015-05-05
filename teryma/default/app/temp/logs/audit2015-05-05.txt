@@ -1,0 +1,3 @@
+[Tue, 05 May 15 14:31:04 +0200][INFO] [/sistema/configuracion/routes/][admin][::1] Se ha actualizado el archivo de enrutamiento interno del sistema.
+[Tue, 05 May 15 14:34:56 +0200][INFO] [/sistema/configuracion/routes/][admin][::1] Se ha actualizado el archivo de enrutamiento interno del sistema.
+[Tue, 05 May 15 14:35:13 +0200][INFO] [/sistema/configuracion/reset/][admin][::1] Se han restaurado los archivos de configuración, enrutamiento y de conexión del sistema.
