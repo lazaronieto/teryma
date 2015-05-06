@@ -1,0 +1,103 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * @category app
+ * @package views/entradas
+ * @author Lázaro Nieto Aranda
+ * @date 06-may-2015
+ * @time 11:38:47
+ */
+
+View::flash(); ?>
+<?php View::process($page_module, $page_title, $set_title); ?>
+<div class="container shell-view">
+    <div class="row">
+        <?php echo DwForm::open('', '', array('id'=>'form-registro', 'class'=>'')); ?>
+        <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-4">
+            <?php echo DwForm::select('año',array('2015'=>'2015', '2016'=>'2016', '2017'=>'2017', '2018'=>'2018'), array('class'=>''),date('Y'),'Año'); ?>
+        </div>
+        <div class="form-actions">
+                <?php echo DwForm::submit('mostrar'); ?>
+            </div>
+        <?php echo DwForm::close(); ?>
+    </div>
+    <div class="row">
+        <div id="grafico2"></div>
+    </div>
+</div>
+<?php echo Tag::js('highcharts/highcharts').PHP_EOL; ?>
+<?php echo Tag::js('highcharts/highcharts-3d').PHP_EOL; ?>
+<?php echo Tag::js('highcharts/exporting').PHP_EOL; ?>
+<script type="text/javascript">
+    $(function () {
+    $('#grafico2').highcharts({
+
+        chart: {
+            type: 'column',
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 15,
+                viewDistance: 80,
+                depth: 40
+            },
+            marginTop: 80,
+            marginRight: 40
+        },
+
+        title: {
+            text: 'Total movimiento de vagones anual'
+        },
+
+        xAxis: {
+            categories: ['Enero', 'Febrero', 'Marzo', 'Abril','Mayo']
+        },
+
+        yAxis: {
+            allowDecimals: false,
+            min: 0,
+            title: {
+                text: 'Numero de vagones'
+            }
+        },
+
+        tooltip: {
+            headerFormat: '<b>{point.key}</b><br>',
+            pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+        },
+
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                depth: 40
+            }
+        },
+
+        series: [{
+            name: 'Ingles',
+            data: [5, 3, 4, 7, 2],
+            stack: 'male'
+            
+        }, {
+            name: 'Aleman',
+            data: [3, 4, 4, 2, 5],
+            stack: 'mal'
+        }, {
+            name: 'Autos',
+            data: [2, 5, 6, 2, 1],
+            stack: 'female'
+        }, {
+            name: 'Contenedor',
+            data: [3, 0, 4, 4, 3],
+            stack: 'femal'
+        }]
+    });
+});
+</script>

@@ -169,3 +169,10 @@ ul .ui-selected .sort-handle{
 #tabla tr td ,#tabla tr th{
     text-align: center;
 }
+
+#grafico2 {
+	height: 400px; 
+	min-width: 310px; 
+	max-width: 80%;
+	margin: 0 auto;
+}
