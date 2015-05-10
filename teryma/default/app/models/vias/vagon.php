@@ -29,4 +29,8 @@ class Vagon extends ActiveRecord {
         $this->has_many('vias/caja');
     }
     
+    //función que devuelve todos los vagones de una vía
+    public function vagonesVia($via){
+        return $this->find_all_by_sql("select * from vagon where vias_id = '$via' order by orden asc");
+    }
 }

@@ -25,4 +25,8 @@ class Tipo extends ActiveRecord {
         $this->belongs_to('vias/vagon');
     }
     
+    //función que devuelve un tipo por id
+    public function tipoId($id){
+        return $this->find($id);
+    }
 }

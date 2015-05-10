@@ -88,7 +88,7 @@ class GraficosController extends BackendController {
     
     protected function  after_filter() {
         if ( Input::isAjax() ){
-            View::template(null); //si es ajax solo mostramos la vista
+            //View::template(null); //si es ajax solo mostramos la vista
         }
     }
 }
