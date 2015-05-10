@@ -40,14 +40,28 @@ class ViasController extends BackendController {
      */
     public function listar() {
         $this->vias = Load::model('vias/vias')->getVias();
-        if (Input::hasPost('orden')) {
-            
-        }
     }
     
     public function listarVia($via){
         $this->page_title = 'Vía '.$via;
-        $this->vagones = Load::Model('vias/vagon')->find_all_by_sql("select * from vagon where vias_id = '$via' order by orden");
+        $this->vagones = Load::Model('vias/vagon')->vagonesVia($via);
+        foreach($this->vagones as $row):
+            $row->tipo = Load::model('vias/tipo')->tipoId($row->tipo_id);
+            $cajas = $row->getCaja();
+            if (count($cajas)==2){
+                $row->caja1 = $cajas[0]->id_caja;
+                $row->caja2 = $cajas[1]->id_caja;
+            }
+            if (count($cajas)==1){
+                $row->caja1 = $cajas[0]->id_caja;
+                $row->caja2 = ' --- ';
+            }
+            if (count($cajas)==0){
+                $row->caja1 = ' --- ';
+                $row->caja2 = ' --- ';
+            }
+            
+        endforeach;
         $this->via= $via;
     }
     
