@@ -25,4 +25,9 @@ class Tren extends ActiveRecord {
         $this->belongs_to('vias/vias');
     }
     
+    //fución que devuelve el último tren guardado
+    public function ultimo (){
+        return $this->find_first("order: id desc");
+    }
+    
 }

@@ -25,4 +25,9 @@ class Caja extends ActiveRecord {
         $this->belongs_to('vias/vagon');
     }
     
+    //función que busca caja por su numeración
+    public function buscar ($id_caja) {
+        return $this->find_first("id_caja = $id_caja");
+    }
+    
 }

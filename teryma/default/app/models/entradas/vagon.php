@@ -29,4 +29,9 @@ class Vagon extends ActiveRecord {
         $this->has_many('vias/caja');
     }
     
+    //función que busca vagón por su numeración
+    public function buscar ($id_vagon) {
+        return $this->find_first("id_vagon='$id_vagon'");
+    }
+    
 }

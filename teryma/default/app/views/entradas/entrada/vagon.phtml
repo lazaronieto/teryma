@@ -25,13 +25,14 @@ View::flash(); ?>
             <?php echo DwForm::hidden('vagon.vias_id',null,Session::get('via')); ?>
             <?php echo DwForm::hidden('vagon.orden',null,Session::get('orden')); ?>
             <?php echo DwForm::select('vagon.estado',array('útil'=>'útil', 'inutil'=>'inutil'), array('class'=>'input-required'),'útil','Estado'); ?>
-            <div class="col-md-2">
+            <div class="col-md-12">
+                <p>Guarda el vagón antes de añadir caja</p>
             <?php echo DwForm::fieldset("<a id='add-caja1' href='#form-add-caja' class='btn btn-default' data-toggle='modal'><i class='fa fa-check fa-pd-expand'></i>Agregar caja</a>"); ?>
             </div>
         </div>
         <div class="col-md-1">&nbsp;</div>
         <div class="col-md-4">
-            <?php echo DwForm::select('vagon.tipo_id',array(''=>'', '1'=>'ingles', '2'=>'aleman'), array('class'=>'input-required'),'', 'Tipo'); ?>
+            <?php echo DwForm::select('vagon.tipo_id',array(''=>'', '1'=>'ingles', '2'=>'aleman', '3'=>'autos', '4'=>'porta-contenedor'), array('class'=>'input-required'),'', 'Tipo'); ?>
             <div class="form-actions">
                 <?php echo DwForm::send(); ?>
                 <?php echo DwForm::cancel(); ?>
@@ -74,7 +75,8 @@ View::flash(); ?>
         $("#boton").click(function(){            
             $('#caja_id_caja').attr('value','');
             $("#caja_tipo").attr('value','');
-            $("#form-add-caja").modal('hide');
+            $("#form-add-caja").modal('toggle');
+            location.reload(true);
         });
     });
 </script>
