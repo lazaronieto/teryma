@@ -40,6 +40,46 @@ class ViasController extends BackendController {
      */
     public function listar() {
         $this->vias = Load::model('vias/vias')->getVias();
+        foreach($this->vias as $row):
+            $row->vagones = Load::Model('vias/vagon')->vagonesVia($row->id);
+            foreach($row->vagones as $vag):
+                $vag->tipo = Load::model('vias/tipo')->tipoId($vag->tipo_id);
+                $cajas = $vag->getCaja();
+                if (count($cajas)==2){
+                    $vag->caja1 = $cajas[0]->id_caja;
+                    $vag->caja2 = $cajas[1]->id_caja;
+                    $vag->img = 2;
+                    $vag->cont = 2;
+                }
+                if (count($cajas)==1){
+                    if($vag->tipo->tipo=='aleman' || $vag->tipo->tipo=='portacontenedor'){
+                        $vag->img = 1;
+                        $vag->cont = 2;
+                        $vag->caja1 = $cajas[0]->id_caja;
+                        $vag->caja2 = ' --- ';
+                    }elseif ($vag->tipo->tipo=='ingles') {
+                        $vag->img = 1;
+                        $vag->cont = 1;
+                        $vag->caja1 = $cajas[0]->id_caja;
+                        $vag->caja2 = null;
+                    }
+                    
+                }
+                if (count($cajas)==0){
+                    if($vag->tipo->tipo=='aleman' || $vag->tipo->tipo=='portacontenedor'){
+                        $vag->img = 0;
+                        $vag->cont = 2;
+                        $vag->caja1 = ' --- ';
+                        $vag->caja2 = ' --- ';
+                    }elseif ($vag->tipo->tipo=='ingles') {
+                        $vag->img = 0;
+                        $vag->cont = 1;
+                        $vag->caja1 = ' --- ';
+                        $vag->caja2 = null;
+                    }
+                }
+            endforeach;
+        endforeach;
     }
     
     public function listarVia($via){

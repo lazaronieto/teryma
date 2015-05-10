@@ -84,64 +84,25 @@ $(function() {
 
     <?php if($vias) { ?>
 	<?php foreach($vias as $row): ?>
-        <?php if($row->id < 99){ ?>
             <div class="separador">Vía <?php echo $row->id; ?></div>
             <div class="vias" style="width:<?php echo $row->largo *3.333; ?>px; height:60px; padding-bottom:1px; border: 1px solid #7C7C7C; border-bottom: 3px solid black;" id="via<?php echo $row->id; ?>">
-				<ul id="v-<?php echo $row->id; ?>" class="cont" style="width:<?php echo $row->largo*3.333; ?>px; height:60px; list-style: none;">
-                                    <?php $vagones = Load::Model('vias/vagon')->find_all_by_sql("select * from vagon where vias_id = '$row->id' order by orden"); ?>
-                                    <?php foreach($vagones as $vag): ?>
-                                        <?php $tipo = Load::model('vias/tipo')->find($vag->tipo_id); ?>
-                                        <?php $cajas = Load::model('vias/caja')->find_all_by_sql("select * from caja where vagon_id = '$vag->id'"); ?>
-					<li id="va-<?php echo $vag->id; ?>" style=" display:inline-block;height: 60px; ">
-                                            <span class="sort-handle">&#8225;</span>
-                                            <table style="width:<?php echo $tipo->medida*3.333 ?>; margin-right:1px; display:inline-block;">
-                                                <tr>
-                                                    
-                                                    <?php $cont =0; $img=0;?>
-                                                    <?php if (count($cajas)==2){
-                                                        foreach ($cajas as $caja):?>
-                                                    <td><?php echo $caja->id_caja; ?></td>
-                                                    <?php $cont++; $img++?>
-                                                    <?php endforeach;}?>
-                                                    
-                                                    <?php 
-                                                    if (count($cajas)==1){
-                                                        if($tipo->tipo=='aleman' || $tipo->tipo=='portacontenedor'){
-                                                            foreach ($cajas as $caja):
-                                                            echo '<td>'.$caja->id_caja.'</td>'; 
-                                                        endforeach;
-                                                            $img=1;
-                                                            echo'<td> --- </td>';
-                                                            $cont=2;
-                                                        }
-                                                    }  if($tipo->tipo=='ingles') {
-                                                        foreach ($cajas as $caja):
-                                                        echo '<td>'.$caja->id_caja.'</td>'; $img=1;
-                                                        endforeach;
-                                                        $cont=1;
-                                                    }
-                                                    if (count($cajas)==0){
-                                                        if($tipo->tipo=='aleman' || $tipo->tipo=='portacontenedor'){
-                                                            echo'<td> --- </td><td> --- </td>';
-                                                            $img=0; $cont=2;
-                                                        } if($tipo->tipo=='ingles') {
-                                                            echo'<td> --- </td>';
-                                                            $img=0; $cont=1;
-                                                        }
-                                                    }
-                                                    ?>
-                                                    
-                                                    
-                                                </tr> 
-                                                <tr><td colspan="<?php echo $cont ?>"><?php echo Html::img('vagones/'.$tipo->tipo.$img.'.png', $alt=NULL, 'width:'.$tipo->medida*3.333 ) ?><?php //echo img_tag(“carro.gif”, “width: 100”, “border: 0”) ?></td></tr>
-                                                <tr><td colspan="<?php echo $cont ?>"><?php echo $vag->id_vagon ?></td></tr>
-                                            </table>
-                                        </li>
-                                    <?php endforeach; ?>
-				</ul>
-			</div>
-			<div class="row separador" style="width:100%; height:30px;"></div>
-        <?php } ?>
+                <ul id="v-<?php echo $row->id; ?>" class="cont" style="width:<?php echo $row->largo*3.333; ?>px; height:60px; list-style: none;">
+                    <?php foreach($row->vagones as $vag): ?>
+                        <li id="va-<?php echo $vag->id; ?>" style=" display:inline-block;height: 60px; ">
+                            <span class="sort-handle">&#8225;</span>
+                            <table style="width:<?php echo $vag->tipo->medida*3.333 ?>; margin-right:1px; display:inline-block;">
+                                <tr>
+                                    <td><?php echo $vag->caja1 ?></td>
+                                    <?php if($vag->caja2){ echo"<td>$vag->caja2</td>";}?>
+                                 </tr> 
+                                <tr><td colspan="<?php echo $vag->cont ?>"><?php echo Html::img('vagones/'.$vag->tipo->tipo.$vag->img.'.png', $alt=NULL, 'width:'.$vag->tipo->medida*3.333 ) ?><?php //echo img_tag(“carro.gif”, “width: 100”, “border: 0”) ?></td></tr>
+                                <tr><td colspan="<?php echo $vag->cont ?>"><?php echo $vag->id_vagon ?></td></tr>
+                            </table>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <div class="row separador" style="width:100%; height:30px;"></div>
         <?php endforeach; ?>
     <?php } ?>
   
