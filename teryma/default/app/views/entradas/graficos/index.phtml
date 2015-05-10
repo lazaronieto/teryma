@@ -57,7 +57,7 @@ View::flash(); ?>
         },
 
         xAxis: {
-            categories: ['Enero', 'Febrero', 'Marzo', 'Abril','Mayo']
+            categories: ['Enero', 'Febre', 'Marzo', 'Abril','Mayo','Junio','Julio','Agosto','Septi','Octu','Novi','Dici']
         },
 
         yAxis: {
@@ -82,21 +82,25 @@ View::flash(); ?>
 
         series: [{
             name: 'Ingles',
-            data: [5, 3, 4, 7, 2],
+            data: [<?php echo $inglEner->total; ?>,<?php echo $inglFebr->total; ?>,<?php echo $inglMarz->total; ?>,<?php echo $inglAbri->total; ?>,<?php echo $inglMayo->total; ?>,<?php echo $inglJuni->total; ?>,
+                   <?php echo $inglJuli->total; ?>,<?php echo $inglAgos->total; ?>,<?php echo $inglSept->total; ?>,<?php echo $inglOctu->total; ?>,<?php echo $inglNovi->total; ?>,<?php echo $inglDici->total; ?> ],
             stack: 'male'
             
         }, {
             name: 'Aleman',
-            data: [3, 4, 4, 2, 5],
-            stack: 'mal'
+            data: [<?php echo $alemEner->total; ?>,<?php echo $alemFebr->total; ?>,<?php echo $alemMarz->total; ?>,<?php echo $alemAbri->total; ?>,<?php echo $alemMayo->total; ?>,<?php echo $alemJuni->total; ?>,
+                   <?php echo $alemJuli->total; ?>,<?php echo $alemAgos->total; ?>,<?php echo $alemSept->total; ?>,<?php echo $alemOctu->total; ?>,<?php echo $alemNovi->total; ?>,<?php echo $alemDici->total; ?> ],
+            stack: '3male'
         }, {
             name: 'Autos',
-            data: [2, 5, 6, 2, 1],
-            stack: 'female'
+            data: [<?php echo $autoEner->total; ?>,<?php echo $autoFebr->total; ?>,<?php echo $autoMarz->total; ?>,<?php echo $autoAbri->total; ?>,<?php echo $autoMayo->total; ?>,<?php echo $autoJuni->total; ?>,
+                   <?php echo $autoJuli->total; ?>,<?php echo $autoAgos->total; ?>,<?php echo $autoSept->total; ?>,<?php echo $autoOctu->total; ?>,<?php echo $autoNovi->total; ?>,<?php echo $autoDici->total; ?> ],
+            stack: '2male'
         }, {
             name: 'Contenedor',
-            data: [3, 0, 4, 4, 3],
-            stack: 'femal'
+            data: [<?php echo $portEner->total; ?>,<?php echo $portFebr->total; ?>,<?php echo $portMarz->total; ?>,<?php echo $portAbri->total; ?>,<?php echo $portMayo->total; ?>,<?php echo $portJuni->total; ?>,
+                   <?php echo $portJuli->total; ?>,<?php echo $portAgos->total; ?>,<?php echo $portSept->total; ?>,<?php echo $portOctu->total; ?>,<?php echo $portNovi->total; ?>,<?php echo $portDici->total; ?> ],
+            stack: '1male'
         }]
     });
 });

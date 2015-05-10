@@ -25,4 +25,10 @@ class Composicion extends ActiveRecord {
         $this->belongs_to('vias/vias');
     }
     
+    public function contar($fecha, $tipo) {
+        return $this->find_by_sql("select count(*) as total from composicion 
+            INNER JOIN tren ON composicion.tren_id = tren.id 
+            INNER JOIN vagon ON composicion.vagon_id = vagon.id
+            WHERE tren.fecha_at >= '$fecha-01' AND tren.fecha_at <= '$fecha-31' AND vagon.tipo_id = $tipo;");
+    }
 }

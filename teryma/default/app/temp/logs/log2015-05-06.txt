@@ -128,3 +128,7 @@
 [Wed, 06 May 15 15:42:43 +0200][DEBUG] DESCRIBE `menu`
 [Wed, 06 May 15 15:44:28 +0200][DEBUG] DESCRIBE `usuario`
 [Wed, 06 May 15 15:44:28 +0200][DEBUG] DESCRIBE `menu`
+[Wed, 06 May 15 16:32:02 +0200][DEBUG] DESCRIBE `usuario`
+[Wed, 06 May 15 16:32:03 +0200][DEBUG] DESCRIBE `usuario`
+[Wed, 06 May 15 16:32:11 +0200][DEBUG] DESCRIBE `usuario`
+[Wed, 06 May 15 16:32:12 +0200][DEBUG] DESCRIBE `menu`
