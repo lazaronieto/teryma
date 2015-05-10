@@ -37,4 +37,9 @@ class Composicion extends ActiveRecord {
     public function buscarFila ($vagon_id, $tren_id){
         return $this->find_by_sql("select * from composicion where vagon_id = $vagon_id and tren_id = $tren_id;");
     }
+    
+    // función para contar los vagones que salieron o entraron de la playa filtrados por tren y tipo de vagón
+    public function contarTipo($tren, $tipo) {
+        return $this->find_by_sql("select count(*) as total from composicion where tren_id = $tren and vagon_id IN (select id from vagon where tipo_id = $tipo ); ");
+    }
 }

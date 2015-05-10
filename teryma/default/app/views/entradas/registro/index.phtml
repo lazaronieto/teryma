@@ -44,51 +44,16 @@ View::flash(); ?>
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    <?php $linea=1; $num=0;?>
                     <?php foreach($registro as $row): ?>
                         <tr>
                             <td><?php echo $row->tipo; ?></td>
                             <td><?php echo $row->vias_id; ?></td>
                             <td><?php echo $row->hora_at; ?></td>
-                            <td>
-                                <?php $dato=Load::model('entradas/composicion')->find_all_by_sql("select id from composicion where tren_id = $row->id and vagon_id IN (select id from vagon where tipo_id = 1 ); "); 
-                                foreach($dato as $ro):
-                                    $num++;
-                                endforeach;
-                                echo $num;
-                                $num=0;
-                                ?>
-                            </td>
-                            <td>
-                                <?php $dato=Load::model('entradas/composicion')->find_all_by_sql("select id from composicion where tren_id = $row->id and vagon_id IN (select id from vagon where tipo_id = 2 ); "); 
-                                foreach($dato as $ro):
-                                    $num++;
-                                endforeach;
-                                echo $num;
-                                $num=0;
-                                ?>
-                            </td>
-                            <td>
-                                <?php $dato=Load::model('entradas/composicion')->find_all_by_sql("select id from composicion where tren_id = $row->id and vagon_id IN (select id from vagon where tipo_id = 3 ); "); 
-                                foreach($dato as $ro):
-                                    $num++;
-                                endforeach;
-                                echo $num;
-                                $num=0;
-                                ?>
-                            </td>
-                            <td>
-                                <?php $dato=Load::model('entradas/composicion')->find_all_by_sql("select id from composicion where tren_id = $row->id and vagon_id IN (select id from vagon where tipo_id = 4 ); "); 
-                                foreach($dato as $ro):
-                                    $num++;
-                                endforeach;
-                                echo $num;
-                                $num=0;
-                                ?>
-                            </td>
+                            <td><?php echo $row->tipo1->total;?></td>
+                            <td><?php echo $row->tipo2->total;?></td>
+                            <td><?php echo $row->tipo3->total;?></td>
+                            <td><?php echo $row->tipo4->total;?></td>
                         </tr>
-                        <?php $linea++ ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -102,7 +67,7 @@ View::flash(); ?>
                 </tr>
             </table>            
         </div>
-        <?php }else {echo 'MIERDA';} ?>
+        <?php } ?>
     </div>
 </div>
 <script type="text/javascript">

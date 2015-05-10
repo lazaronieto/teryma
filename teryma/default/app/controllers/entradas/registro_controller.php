@@ -28,6 +28,12 @@ class RegistroController extends BackendController {
         if (Input::hasPost('fecha')) {
             $fecha = Input::post('fecha');
             $this->registro = Load::Model('entradas/tren')->buscarDia($fecha);
+            foreach($this->registro as $row):
+                $row->tipo1 = Load::Model('entradas/composicion')->contarTipo($row->id, 1);
+                $row->tipo2 = Load::Model('entradas/composicion')->contarTipo($row->id, 2);
+                $row->tipo3 = Load::Model('entradas/composicion')->contarTipo($row->id, 3);
+                $row->tipo4 = Load::Model('entradas/composicion')->contarTipo($row->id, 4);
+            endforeach;
         }
     }
             
