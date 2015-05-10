@@ -30,4 +30,9 @@ class Tren extends ActiveRecord {
         return $this->find_first("order: id desc");
     }
     
+    //función que devuelve todos los trenes del día indicado en $fecha
+    public function buscarDia ($fecha){
+        return $this->find_all_by_sql("select * from tren where fecha_at = '$fecha' order by hora_at ASC");
+    }
+    
 }

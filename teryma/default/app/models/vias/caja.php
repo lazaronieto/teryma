@@ -30,4 +30,9 @@ class Caja extends ActiveRecord {
         return $this->find_first("id_caja = $id_caja");
     }
     
+    //función que busca cajas por la id del vagón
+    public function buscarVagon ($id) {
+        return $this->find("vagon_id = $id ");
+    }
+    
 }

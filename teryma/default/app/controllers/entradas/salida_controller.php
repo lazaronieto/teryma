@@ -30,24 +30,24 @@ class SalidaController extends BackendController {
             $tren = new Tren(Input::post('tren')); //creamos el objeto y le damos los valores del formulario
             if ($tren->save()) { //verificamos si se guardaron los datos
                 Flash::valid('Guardada La Salida');
-                //buscamos el último tren guardado
-                $ultimo = Load::model('entradas/tren')->find_first("order: id desc");
+                //buscamos el último tren guardado para conocer el id
+                $idUltimo = Load::model('entradas/tren')->ultimo();
                 //buscamos los vagones que hay en la via del tren con limite nº vagones
-                $vagones = Load::model('entradas/vagon')->find_all_by_sql("select * from vagon where vias_id = '$ultimo->vias_id' ORDER BY  orden DESC LIMIT $ultimo->vagones");
+                $vagones = Load::model('entradas/vagon')->vagonesVia($tren->vias_id, $tren->vagones);
                 foreach($vagones as $row)://recorremos los vagones
-                    $cajas = Load::model('vias/caja')->find("vagon_id = $row->id ");//bucamos las cajas del vagón
+                    $cajas = Load::model('vias/caja')->buscarVagon($row->id );//bucamos las cajas del vagón
                     $caja1=null; $caja2=null; $orden=1; // dos variables para las id de las cajas y una para el orden
-                    foreach ($cajas as $value) :
-                        if($caja1==null){
-                            $caja1=$value->id;
-                        }  else {
-                            $caja2=$value->id;
+                    foreach ($cajas as $caja) : //recorremos las cajas
+                        if($caja1==null){ // si la primera es null le damos el id de la caja
+                            $caja1=$caja->id;
+                        }  else { // si hay otra caja le damos el id de la segunda
+                            $caja2=$caja->id;
                         }
-                        //$value->delete(); //eliminamos caja
                     endforeach;
                     //armamos un array para guardar composición
-                    $arrayComp = array('vagon_id'=>$row->id, 'tren_id'=>$ultimo->id, 'caja_id'=>$caja1, 'caja2_id'=>$caja2, 'orden'=>$orden);
+                    $arrayComp = array('vagon_id'=>$row->id, 'tren_id'=>$idUltimo->id, 'caja_id'=>$caja1, 'caja2_id'=>$caja2, 'orden'=>$orden);
                     $orden++; //aumentamos orden
+                    $caja1=null; $caja2=null;// vaciamos las id de las cajas para el siguiente
                     Load::models('entradas/composicion'); //cargamos el modelo composicion
                     $composicion = new Composicion($arrayComp);//creamos el objeto con los valores del array
                     $composicion->save();//guardamos

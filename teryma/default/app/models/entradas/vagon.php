@@ -34,4 +34,9 @@ class Vagon extends ActiveRecord {
         return $this->find_first("id_vagon='$id_vagon'");
     }
     
+    //función que devuelve todos los vagones de la vía $via en orden decendente y con limite $limite
+    public function vagonesVia ($via, $limite){
+        return $this->find_all_by_sql("select * from vagon where vias_id = $via ORDER BY  orden DESC LIMIT $limite");
+    }
+    
 }

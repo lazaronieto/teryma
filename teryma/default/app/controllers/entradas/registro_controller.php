@@ -27,7 +27,7 @@ class RegistroController extends BackendController {
     public function index() {
         if (Input::hasPost('fecha')) {
             $fecha = Input::post('fecha');
-            $this->registro = Load::Model('entradas/tren')->find_all_by_sql("select * from tren where fecha_at = '$fecha' order by hora_at ASC");
+            $this->registro = Load::Model('entradas/tren')->buscarDia($fecha);
         }
     }
             
