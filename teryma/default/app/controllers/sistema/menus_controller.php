@@ -66,7 +66,7 @@ class MenusController extends BackendController {
             return Redirect::toAction('listar');
         }
 
-        if($menu->id <= 2) {
+        if($menu->id <= -1) {//cambiado de 2 a -1 para poder eliminar dahboard
             Flash::warning('Lo sentimos, pero este menú no se puede editar.');
             return Redirect::toAction('listar');
         }
@@ -99,7 +99,7 @@ class MenusController extends BackendController {
         if(!$menu->find_first($id)) {
             Flash::error('Lo sentimos, pero no se ha podido establecer la información del menú');
         } else {
-            if($menu->id <= 2) {
+            if($menu->id <= -1) {//cambiado de 2 a -1 para poder eliminar dahboard
                 Flash::warning('Lo sentimos, pero este menú no se puede editar.');
                 return Redirect::toAction('listar');
             }
@@ -131,7 +131,7 @@ class MenusController extends BackendController {
             Flash::error('Lo sentimos, pero no se ha podido establecer la información del menú');
             return Redirect::toAction('listar');
         }
-        if($menu->id <= 2) {
+        if($menu->id <= -1) {//cambiado de 2 a -1 para poder eliminar dahboard
             Flash::warning('Lo sentimos, pero este menú no se puede eliminar.');
             return Redirect::toAction('listar');
         }

@@ -44,13 +44,13 @@ class LoginController extends BackendController {
     public function entrar() {         
         if(Input::hasPost('login') && Input::hasPost('password') && Input::hasPost('mode')) {
             if(Usuario::setSession('open', Input::post('login'), Input::post('password'))) {
-                return Redirect::to('dashboard/');
+                return Redirect::to('vias/vias/');//cambiado punto de entrada antes dashboard
             } else {
                 //Se soluciona lo de la llave de seguridad
                 return Redirect::toAction('entrar/');
             }                      
         } else if(DwAuth::isLogged()) {
-            return Redirect::to('dashboard/');
+            return Redirect::to('vias/vias/');//cambiado punto de entrada antes dashboard
         }
     }
     
