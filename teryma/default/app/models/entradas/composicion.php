@@ -21,8 +21,12 @@ class Composicion extends ActiveRecord {
     
     public function initialize(){
         //Relaciones
-        //Una tren solo puede estar en una vía
-        $this->belongs_to('vias/vias');
+        //Una composicón solo puede tener un vagón
+        $this->belongs_to('entradas/vias');
+        //un composición puede tener varias cajas
+        $this->has_many('vias/caja');
+        //un composición puede estar en varios trenes
+        $this->has_many('entradas/tren');
     }
     
     // función para contar los vagones que salieron o entraron de la playa filtrados por fecha y tipo de vagón

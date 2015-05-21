@@ -29,7 +29,8 @@ function orden(or, ord){
         $texto+= $(this).attr('id')+',';
     });
     $texto=$texto.slice(0, -1);
-    location.href='http://localhost/teryma/teryma/vias/vias/ordenar/'+$texto;
+//    location.href='http://localhost/teryma/teryma/vias/vias/ordenar/'+$texto;
+    location.href=$.KumbiaPHP.publicPath+'/vias/vias/ordenar/'+$texto;
 }
 </script>
 <script>
