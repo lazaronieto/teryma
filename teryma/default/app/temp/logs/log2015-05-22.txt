@@ -1,0 +1,56 @@
+[Fri, 22 May 15 10:42:10 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:42:10 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:42:21 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:42:21 +0200][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Fri, 22 May 15 10:42:21 +0200][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Fri, 22 May 15 10:42:21 +0200][DEBUG] DESCRIBE `acceso`
+[Fri, 22 May 15 10:42:21 +0200][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','::1','2015-05-22 10:42:21')
+[Fri, 22 May 15 10:42:21 +0200][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 53 LIMIT 1
+[Fri, 22 May 15 10:42:21 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:42:21 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:42:22 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 22 May 15 10:42:39 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:42:52 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:42:52 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 22 May 15 10:42:52 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 22 May 15 10:42:52 +0200][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 22 May 15 10:42:52 +0200][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 15 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Fri, 22 May 15 10:42:56 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:42:59 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:42:59 +0200][DEBUG] DESCRIBE `backup`
+[Fri, 22 May 15 10:42:59 +0200][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Fri, 22 May 15 10:42:59 +0200][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Fri, 22 May 15 10:43:02 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:43:05 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:43:44 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:43:47 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:43:47 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:43:55 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:43:55 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:43:55 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 22 May 15 10:44:57 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:44:57 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:44:57 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 22 May 15 10:45:24 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:45:24 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:45:24 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 22 May 15 10:45:33 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:45:34 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:45:34 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 22 May 15 10:46:06 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:46:06 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:46:06 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 22 May 15 10:46:44 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:46:44 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:46:44 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 22 May 15 10:46:51 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:46:51 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:46:51 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 22 May 15 10:46:59 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:46:59 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 10:46:59 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 22 May 15 11:02:43 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 11:02:43 +0200][DEBUG] DESCRIBE `menu`
+[Fri, 22 May 15 11:03:05 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 11:03:05 +0200][DEBUG] DESCRIBE `usuario`
+[Fri, 22 May 15 11:03:05 +0200][DEBUG] DESCRIBE `menu`
