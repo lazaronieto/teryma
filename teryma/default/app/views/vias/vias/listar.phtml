@@ -30,7 +30,10 @@ function orden(or, ord){
     });
     $texto=$texto.slice(0, -1);
 //    location.href='http://localhost/teryma/teryma/vias/vias/ordenar/'+$texto;
-    location.href=$.KumbiaPHP.publicPath+'/vias/vias/ordenar/'+$texto;
+//    location.href=$.KumbiaPHP.publicPath+'/vias/vias/ordenar/'+$texto;
+    $('#orden').val($texto);
+   // $('form').submit();
+   $('#blanco').submit();
 }
 </script>
 <script>
@@ -82,29 +85,35 @@ $(function() {
 <div class="blanco">
 
     <?php View::process($page_module, $page_title, $set_title); ?>
+    <?php echo Ajax::form(null,null,'"id="blanco') ?>
+    <?php echo Form::hidden('orden') ?>
+    <?php echo Form::close() ?>
 
     <?php if($vias) { ?>
 	<?php foreach($vias as $row): ?>
-            <div class="separador">Vía <?php echo $row->id; ?></div>
-            <div class="vias" style="width:<?php echo $row->largo *3.333; ?>px; height:60px; padding-bottom:1px; border: 1px solid #7C7C7C; border-bottom: 3px solid black;" id="via<?php echo $row->id; ?>">
-                <ul id="v-<?php echo $row->id; ?>" class="cont" style="width:<?php echo $row->largo*3.333; ?>px; height:60px; list-style: none;">
-                    <?php foreach($row->vagones as $vag): ?>
-                        <li id="va-<?php echo $vag->id; ?>" style=" display:inline-block;height: 60px; ">
-                            <span class="sort-handle">&#8225;</span>
-                            <table style="width:<?php echo $vag->tipo->medida*3.333 ?>; margin-right:1px; display:inline-block;">
-                                <tr>
-                                    <td><?php echo $vag->caja1 ?></td>
-                                    <?php if($vag->caja2){ echo"<td>$vag->caja2</td>";}?>
-                                 </tr> 
-                                <tr><td colspan="<?php echo $vag->cont ?>"><?php echo Html::img('vagones/'.$vag->tipo->tipo.$vag->img.'.png', $alt=NULL, 'width:'.$vag->tipo->medida*3.333 ) ?><?php //echo img_tag(“carro.gif”, “width: 100”, “border: 0”) ?></td></tr>
-                                <tr><td colspan="<?php echo $vag->cont ?>"><?php echo $vag->id_vagon ?></td></tr>
-                            </table>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-            <div class="row separador" style="width:100%; height:30px;"></div>
+            <?php if($row->id < 99){ ?>
+                <div class="separador">Vía <?php echo $row->id; ?></div>
+                <div class="vias" style="width:<?php echo $row->largo *3.333; ?>px; height:60px; padding-bottom:1px; border: 1px solid #7C7C7C; border-bottom: 3px solid black;" id="via<?php echo $row->id; ?>">
+                    <ul id="v-<?php echo $row->id; ?>" class="cont" style="width:<?php echo $row->largo*3.333; ?>px; height:60px; list-style: none;">
+                        <?php foreach($row->vagones as $vag): ?>
+                            <li id="va-<?php echo $vag->id; ?>" style=" display:inline-block;height: 60px; ">
+                                <span class="sort-handle">&#8225;</span>
+                                <table style="width:<?php echo $vag->tipo->medida*3.333 ?>; margin-right:0px; display:inline-block;">
+                                    <tr>
+                                        <td><?php echo $vag->caja1 ?></td>
+                                        <?php if($vag->caja2){ echo"<td>$vag->caja2</td>";}?>
+                                     </tr> 
+                                    <tr><td colspan="<?php echo $vag->cont ?>"><?php echo Html::img('vagones/'.$vag->tipo->tipo.$vag->img.'.png', $alt=NULL, 'width:'.$vag->tipo->medida*3.333 ) ?><?php //echo img_tag(“carro.gif”, “width: 100”, “border: 0”) ?></td></tr>
+                                    <tr><td colspan="<?php echo $vag->cont ?>"><?php echo $vag->id_vagon ?></td></tr>
+                                </table>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <div class="row separador" style="width:100%; height:30px;"></div>
+            <?php } ?>
         <?php endforeach; ?>
+        <div class="row separador" style="width:100%; height:30px;"></div>
     <?php } ?>
   
 </div>

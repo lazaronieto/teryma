@@ -40,6 +40,41 @@ class ViasController extends BackendController {
      */
     public function listar() {
         $this->vias = Load::model('vias/vias')->getVias();
+        
+        if (Input::hasPost('orden')) {
+            $orden = Input::post(orden);
+            $suborden = explode("y", $orden);//separo las dos vías
+            $ordenVia1 = explode('_', $suborden[0]);//separo la vía de los vagones en la primera vía
+            $ordenVia2 = explode('_', $suborden[1]);//separo la vía de los vagones en la segunda vía
+            $ordenVagonVia1 = explode(',',$ordenVia1[1]);// las id en formato va-1 de los vagones primera vía
+            $or=1;
+            foreach($ordenVagonVia1 as $vag):
+                $vagon=$this->vag = Load::model('vias/vagon')->find(substr($vag, 3));
+                $vagon->vias_id = substr($ordenVia1[0], 2) ;
+                $vagon->orden = $or;
+                $vagon->update();
+                $or++;
+            endforeach;
+            $or=1;
+            
+            try{
+// si solo movemos vagones dentro de una misma vía este bloque haría saltar una excepción al no existir una segunda vía
+                if(isset($ordenVia2[1])){
+                    $ordenVagonVia2 = explode(',',$ordenVia2[1]);
+                    foreach($ordenVagonVia2 as $vag):
+                        $vagon=$this->vag = Load::model('vias/vagon')->find(substr($vag, 3));
+                        $vagon->vias_id = substr($ordenVia2[0], 2) ;
+                        $vagon->orden = $or;
+                        $vagon->update();
+                        $or++;
+                    endforeach;
+                }
+            }
+            catch (Exception $e){
+                
+            }
+        }
+        
         foreach($this->vias as $row):
             $row->vagones = Load::Model('vias/vagon')->vagonesVia($row->id);
             foreach($row->vagones as $vag):

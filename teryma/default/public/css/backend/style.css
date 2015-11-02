@@ -129,14 +129,14 @@ small.help-error { display: none;}
 
 .lm-placeholder {
 	border: 1px dotted graytext;
-	width: 125px;
+	width: 50px;
         text-align: center;
 	height: 20px !important;
 	background-color: #ccccff;
 	color: red;
         display:inline-block;
     } 
-.lm-placeholder::before{content: ">---<";}
+.lm-placeholder::before{content: ">-<";}
 li.selected { outline: 1px solid red; }
 .cont td {text-align: center;}
 .cont .sort-handle {
