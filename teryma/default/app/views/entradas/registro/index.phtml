@@ -21,7 +21,7 @@ View::flash(); ?>
         <?php echo DwForm::open('', '', array('id'=>'form-registro', 'class'=>'')); ?>
         <div class="col-md-1">&nbsp;</div>
         <div class="col-md-4">
-            <?php echo DwForm::date('fecha',array('class'=>'input-required'), date("Y-m-d"), 'Fecha'); ?>
+            <?php echo DwForm::date('fecha',array('class'=>'input-required'), date("d-m-Y"), 'Fecha'); ?>
         </div>
         <div class="form-actions">
                 <?php echo DwForm::submit('mostrar'); ?>

@@ -332,7 +332,7 @@ class DwForm extends Form {
             $input.= parent::date($field, $attrs, $value);
         } else {
             $tmp = self::_getFieldName($field);
-            $input.= '<div class="input-group date datepicker" id="dp_'.$tmp['id'].'">';
+            $input.= '<div class="input-group date datepicker" data-date-format="DD-MM-YYYY" id="dp_'.$tmp['id'].'">';
             //Verifico si está definida la clase input-date
             if(!preg_match("/\binput-date\b/i", $attrs['class']) && !preg_match("/\binput-datetime\b/i", $attrs['class'])) {
                 $attrs['class'] = 'input-date '.$attrs['class'];
