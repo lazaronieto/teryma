@@ -141,7 +141,7 @@ $(function() {
                                     <tr>
                                         <td class="hasmenu"><?php echo $vag->caja1 ?></td>
                                         <?php if($vag->caja2){ echo"<td class='hasmenu'>$vag->caja2</td>";}?>
-                                     </tr> 
+                                    </tr> 
                                     <tr><td colspan="<?php echo $vag->cont ?>"><?php echo Html::img('vagones/'.$vag->tipo->tipo.$vag->img.'.png', $alt=NULL, 'width:'.$vag->tipo->medida*3.333 ) ?><?php //echo img_tag(“carro.gif”, “width: 100”, “border: 0”) ?></td></tr>
                                     <tr><td colspan="<?php echo $vag->cont ?>"><?php echo $vag->id_vagon ?></td></tr>
                                 </table>
