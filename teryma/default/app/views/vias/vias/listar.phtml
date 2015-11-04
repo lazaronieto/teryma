@@ -147,8 +147,9 @@ $(function() {
                                         //echo '<td>'.Html::img('vagones/'.$vag->imgC1, $alt=NULL,null).'</td>';
                                         if($vag->imgC2){echo '<td style="background: url('.PUBLIC_PATH.'/img/vagones/'.$vag->imgC2.')no-repeat; height: 14px; width: 50px;"></td>';}//echo '<td>'.Html::img('vagones/'.$vag->imgC2, $alt=null,null).'</td>';}
                                     echo '</tr>';} ?>
-                                    <tr><td colspan="<?php echo $vag->ancho ?>" rowspan="<?php echo $vag->alto ?>" style="background: url(<?php echo PUBLIC_PATH;?>/img/vagones/<?php echo $vag->imgV; ?>)no-repeat; height: 7px;"><?php //echo Html::img('vagones/'.$vag->imgV, $alt=NULL,null); ?><?php //echo img_tag(“carro.gif”, “width: 100”, “border: 0”) ?></td></tr>
-                                    <tr><td colspan="<?php echo $vag->ancho ?>"><?php echo $vag->id_vagon ?></td></tr>
+                                    
+                                    <tr><td colspan="<?php echo $vag->ancho ?>" rowspan="<?php //echo $vag->alto ?>"<?php if($vag->alto==1){echo 'style="background: url('.PUBLIC_PATH.'/img/vagones/'.$vag->imgV.')no-repeat; height: 7px;"';} ?>><?php if($vag->alto==2){echo Html::img('vagones/'.$vag->imgV, $alt=NULL,null);} ?></td></tr>
+                                    <tr><td colspan="<?php echo $vag->ancho ?>" style="width: <?php echo $vag->tipo->medida*3.333 ?>px;"><?php echo $vag->id_vagon ?></td></tr>
                                 </table>
                             </li>
                         <?php endforeach; ?>
