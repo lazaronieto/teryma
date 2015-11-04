@@ -161,7 +161,7 @@ ul .ui-selected .sort-handle{
 
 .blanco {
     background-color: white;
-    width: 1300px !important;
+    width: 2000px !important;
 }
 #tabla tr td ,#tabla tr th{
     text-align: center;
@@ -185,4 +185,12 @@ ul .ui-selected .sort-handle{
 .ui-menu {
 	width: 320px;
         font-size: 5px;
+}
+.vias td img{
+    border-width: 0px !important;
+    margin:0px 0px !important;
+}
+.vias tr{
+    border-width: 0px !important;
+    margin:0px 0px !important;
 }

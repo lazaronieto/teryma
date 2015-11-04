@@ -79,38 +79,57 @@ class ViasController extends BackendController {
             $row->vagones = Load::Model('vias/vagon')->vagonesVia($row->id);
             foreach($row->vagones as $vag):
                 $vag->tipo = Load::model('vias/tipo')->tipoId($vag->tipo_id);
+                $vag->imgV = $vag->tipo->tipo.'.png';
+                $tipoId = $vag->tipo->id;
                 $cajas = $vag->getCaja();
                 if (count($cajas)==2){
                     $vag->caja1 = $cajas[0]->id_caja;
                     $vag->caja2 = $cajas[1]->id_caja;
-                    $vag->img = 2;
-                    $vag->cont = 2;
+                    $vag->imgC1 = $cajas[0]->tipo.'.png';
+                    $vag->imgC2 = $cajas[1]->tipo.'.png';
+                    $vag->ancho = 2;
+                    $vag->alto = 1;
                 }
                 if (count($cajas)==1){
-                    if($vag->tipo->tipo=='aleman' || $vag->tipo->tipo=='portacontenedor'){
-                        $vag->img = 1;
-                        $vag->cont = 2;
+                    if($tipoId==2 || $tipoId==4 || $tipoId==5 || $tipoId==6){
+                        $vag->alto = 1;
+                        $vag->ancho = 2;
                         $vag->caja1 = $cajas[0]->id_caja;
                         $vag->caja2 = ' --- ';
-                    }elseif ($vag->tipo->tipo=='ingles') {
-                        $vag->img = 1;
-                        $vag->cont = 1;
+                        $vag->imgC1 = $cajas[0]->tipo.'.png';
+                        $vag->imgC2 = 'vacio.png';
+                    }elseif ($tipoId==1) {
+                        $vag->alto = 1;
+                        $vag->ancho = 1;
                         $vag->caja1 = $cajas[0]->id_caja;
                         $vag->caja2 = null;
+                        $vag->imgC1 = $cajas[0]->tipo.'.png';
+                        $vag->imgC2 = null;
                     }
                     
                 }
                 if (count($cajas)==0){
-                    if($vag->tipo->tipo=='aleman' || $vag->tipo->tipo=='portacontenedor'){
-                        $vag->img = 0;
-                        $vag->cont = 2;
+                    if($tipoId==2 || $tipoId==4 || $tipoId==5 || $tipoId==6){
+                        $vag->alto = 1;
+                        $vag->ancho = 2;
                         $vag->caja1 = ' --- ';
                         $vag->caja2 = ' --- ';
-                    }elseif ($vag->tipo->tipo=='ingles') {
-                        $vag->img = 0;
-                        $vag->cont = 1;
+                        $vag->imgC1 = 'vacio.png';
+                        $vag->imgC2 = 'vacio.png';
+                    }elseif ($tipoId==1) {
+                        $vag->alto = 1;
+                        $vag->ancho = 1;
                         $vag->caja1 = ' --- ';
                         $vag->caja2 = null;
+                        $vag->imgC1 = 'vacio.png';
+                        $vag->imgC2 = null;
+                    }elseif ($tipoId==3 || $tipoId==7 || $tipoId==8 || $tipoId==9 || $tipoId==10 || $tipoId==11 || $tipoId==12 || $tipoId==13) {
+                        $vag->alto = 2;
+                        $vag->ancho = 2;
+                        $vag->caja1 = ' --- ';
+                        $vag->caja2 = ' --- ';
+                        $vag->imgC1 = null;
+                        $vag->imgC2 = null;
                     }
                 }
             endforeach;
