@@ -19,6 +19,7 @@
         <?php Tag::css('backend/base'); ?>
         <?php Tag::css('backend/style'); ?>
         <?php Tag::css('backend/themes/'.SKIN.'/'.SKIN); ?>
+        <?php Tag::css('backend/jquery-ui'); ?>
         <?php echo Html::includeCss(); ?>        
         <link href="http://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet" type="text/css">        
         <style type="text/css">
@@ -30,12 +31,16 @@
         <?php echo Tag::js('jquery/jquery.min').PHP_EOL; ?>  
         <?php echo Tag::js('multi/jquery-2.1.1'); ?>
         <?php echo Tag::js('multi/jquery-ui'); ?>
-       
+        <?php echo Tag::js('jquery/jquery.themeswitcher'); ?>
+        <?php echo Tag::js('jquery/ui/jquery.ui-contextmenu'); ?>
         <?php echo Tag::js('jquery/ui/jquery.ui.widget'); ?>
         <?php echo Tag::js('jquery/jquery-file-upload/jquery.iframe-transport'); ?>
         <?php echo Tag::js('jquery/jquery-file-upload/jquery.fileupload'); ?>
         <?php echo Tag::js('jquery/jquery-file-upload/jquery.fileupload-fp'); ?>        
         <?php echo Tag::js('jquery/jquery-file-upload/jquery.fileupload-ui'); ?>
+        
+        
+        
        
         <!--[if gte IE 8]><?php echo Tag::js('jquery/jquery-file-upload/cors/jquery.xdr-transport'); ?><![endif]-->
                 
@@ -81,6 +86,7 @@
         
         <?php echo Tag::js('backend').PHP_EOL; ?>
         <?php echo Tag::js('validador').PHP_EOL; ?>
+        
 
 
         <script type="text/javascript">

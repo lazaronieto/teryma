@@ -37,11 +37,15 @@ class SalidaController extends BackendController {
                 foreach($vagones as $row)://recorremos los vagones
                     $cajas = Load::model('vias/caja')->buscarVagon($row->id );//bucamos las cajas del vagón
                     $caja1=null; $caja2=null; $orden=1; // dos variables para las id de las cajas y una para el orden
-                    foreach ($cajas as $caja) : //recorremos las cajas
+                    foreach ($cajas as $caja): //recorremos las cajas
                         if($caja1==null){ // si la primera es null le damos el id de la caja
                             $caja1=$caja->id;
+                            $caja->vagon_id=0; //la ponemos en un vagón ficticio
+                            $caja->update();
                         }  else { // si hay otra caja le damos el id de la segunda
                             $caja2=$caja->id;
+                            $caja->vagon_id=0; //la ponemos en un vagón ficticio
+                            $caja->save();
                         }
                     endforeach;
                     //armamos un array para guardar composición

@@ -173,3 +173,16 @@ ul .ui-selected .sort-handle{
 	max-width: 80%;
 	margin: 0 auto;
 }
+
+/*.hasmenu, .hasmenu2 {
+	border: 1px solid #008;
+	margin: 3px;
+	padding: 5px;
+	width: 30px;
+}*/
+
+/* Optionally define a fixed width for menus */
+.ui-menu {
+	width: 320px;
+        font-size: 5px;
+}

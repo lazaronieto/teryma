@@ -98,3 +98,18 @@
 [Mon, 02 Nov 15 18:56:19 +0100][DEBUG] DESCRIBE `usuario`
 [Mon, 02 Nov 15 19:03:19 +0100][DEBUG] DESCRIBE `usuario`
 [Mon, 02 Nov 15 19:03:22 +0100][DEBUG] DESCRIBE `usuario`
+[Mon, 02 Nov 15 19:17:01 +0100][DEBUG] DESCRIBE `usuario`
+[Mon, 02 Nov 15 19:17:01 +0100][DEBUG] DESCRIBE `usuario`
+[Mon, 02 Nov 15 19:17:05 +0100][DEBUG] DESCRIBE `usuario`
+[Mon, 02 Nov 15 19:17:05 +0100][DEBUG] DESCRIBE `usuario`
+[Mon, 02 Nov 15 19:17:05 +0100][DEBUG] DESCRIBE `menu`
+[Mon, 02 Nov 15 19:19:58 +0100][DEBUG] DESCRIBE `usuario`
+[Mon, 02 Nov 15 19:19:58 +0100][DEBUG] DESCRIBE `menu`
+[Mon, 02 Nov 15 19:21:55 +0100][DEBUG] DESCRIBE `usuario`
+[Mon, 02 Nov 15 19:21:55 +0100][DEBUG] DESCRIBE `menu`
+[Mon, 02 Nov 15 19:22:40 +0100][DEBUG] DESCRIBE `usuario`
+[Mon, 02 Nov 15 19:32:07 +0100][DEBUG] DESCRIBE `usuario`
+[Mon, 02 Nov 15 19:32:07 +0100][DEBUG] DESCRIBE `acceso`
+[Mon, 02 Nov 15 19:32:07 +0100][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','2','::1','2015-11-02 19:32:07')
+[Mon, 02 Nov 15 19:32:07 +0100][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 56 LIMIT 1
+[Mon, 02 Nov 15 19:32:07 +0100][DEBUG] DESCRIBE `usuario`
