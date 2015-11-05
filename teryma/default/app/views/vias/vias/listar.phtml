@@ -139,7 +139,7 @@ $(function() {
                                 <span class="sort-handle">&#8225;</span>
                                 <table style="width:<?php echo $vag->tipo->medida*3.333 ?>; margin-right:0px; display:inline-block;">
                                     <tr>
-                                        <td class="hasmenu"><?php echo $vag->caja1 ?></td>
+                                        <td class="<?php if($vag->alto==1){echo 'hasmenu';} else {echo 'hasmenu2';}?>"><?php echo $vag->caja1 ?></td>
                                         <?php if($vag->caja2){ echo"<td class='hasmenu'>$vag->caja2</td>";}?>
                                     </tr>
                                     <?php if($vag->imgC1){ echo '<tr>';

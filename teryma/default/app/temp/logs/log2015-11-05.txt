@@ -1,0 +1,11 @@
+[Thu, 05 Nov 15 12:34:02 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 05 Nov 15 12:34:02 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 05 Nov 15 12:34:09 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 05 Nov 15 12:34:09 +0100][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Thu, 05 Nov 15 12:34:09 +0100][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Thu, 05 Nov 15 12:34:09 +0100][DEBUG] DESCRIBE `acceso`
+[Thu, 05 Nov 15 12:34:09 +0100][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','::1','2015-11-05 12:34:09')
+[Thu, 05 Nov 15 12:34:09 +0100][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 64 LIMIT 1
+[Thu, 05 Nov 15 12:34:09 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 05 Nov 15 12:34:09 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 05 Nov 15 12:34:09 +0100][DEBUG] DESCRIBE `menu`
