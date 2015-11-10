@@ -93,6 +93,20 @@ $(function() {
 		select: function(event, ui) {
 			var $target = ui.target;
 			alert("select " + ui.cmd + " on " + $target.text());
+                        
+                        if (ui.cmd == "quitar" && $target.text()!== ' --- '){
+                            $('#vacia').val($target.text());
+                            $('#caja1').submit();
+                            
+                            //alert($target.attr("class"));
+                            var $url = "<?php echo PUBLIC_PATH.'/img/vagones/vacio.png'; ?>";
+                            if ($target.attr("class")=="primero hasmenu ui-selectee"){
+                                $target.parent().next().children().first().css('background-image','url(' +$url+')');
+                             }else{
+                                $target.parent().next().children().eq(1).css('background-image','url(' +$url+')');
+                             }
+                             $target.text(' --- ');
+                        }
 			// Optionally return false, to prevent closing the menu now
 		},
 		// Implement the beforeOpen callback to dynamically change the entries
@@ -164,6 +178,9 @@ $(function() {
     <?php echo Ajax::form(null,null,'"id="blanco') ?>
     <?php echo Form::hidden('orden') ?>
     <?php echo Form::close() ?>
+    <?php echo Ajax::form(null,null,'"id="caja1') ?>
+    <?php echo Form::hidden('vacia') ?>
+    <?php echo Form::close() ?>
 
     <?php if($vias) { ?>
 	<?php foreach($vias as $row): ?>
@@ -176,8 +193,8 @@ $(function() {
                                 <span class="sort-handle">&#8225;</span>
                                 <table style="width:<?php echo $vag->tipo->medida*3.333 ?>; margin-right:0px; display:inline-block;">
                                     <tr class="<?php if($vag->alto==1){echo 'caja';} else {echo 'autos';}?>">
-                                        <td class="<?php if($vag->alto==1){echo 'hasmenu';} else {echo 'hasmenu2';}?>"><?php echo $vag->caja1 ?></td>
-                                        <?php if($vag->caja2){ echo"<td class='hasmenu'>$vag->caja2</td>";}?>
+                                        <td class="primero <?php if($vag->alto==1){echo 'hasmenu';} else {echo 'hasmenu2';}?>"><?php echo $vag->caja1 ?></td>
+                                        <?php if($vag->caja2){ echo"<td class='hasmenu segundo'>$vag->caja2</td>";}?>
                                     </tr>
                                     <?php if($vag->imgC1){ echo '<tr>';
                                         echo '<td style="background: url('.PUBLIC_PATH.'/img/vagones/'.$vag->imgC1.')no-repeat; height: 14px; width: 50px;"></td>';

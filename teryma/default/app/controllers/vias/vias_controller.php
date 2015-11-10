@@ -41,6 +41,13 @@ class ViasController extends BackendController {
     public function listar() {
         $this->vias = Load::model('vias/vias')->getVias();
         
+        if (Input::hasPost('vacia')) {
+            $vaciar = Load::model('vias/caja')->buscar(Input::post('vacia'));
+            $vaciar->vagon_id = 0;
+            $vaciar->update();
+            Input::delete('vacia');
+        }
+        
         if (Input::hasPost('orden')) {
             $orden = Input::post(orden);
             $suborden = explode("y", $orden);//separo las dos vías

@@ -35,4 +35,14 @@ class Caja extends ActiveRecord {
         return $this->find("vagon_id = $id ");
     }
     
+    public function quitar($caja){
+        return $this->find("id_caja=$caja");
+        foreach ($this as $row):
+            $row->vagon_id = 0;
+            $row->save();
+        endforeach;
+        $this->vagon_id=0;
+        $this->update();
+    }
+    
 }
