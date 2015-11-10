@@ -79,7 +79,7 @@ $(function() {
                 }
         });
         
-        $(document).contextmenu({
+        $(".caja").contextmenu({
 		delegate: ".hasmenu",
 		autoFocus: true,
 		preventContextMenuForPopup: true,
@@ -116,7 +116,44 @@ $(function() {
 			// Optionally return false, to prevent opening the menu now
 		}
 	});
+        $(".autos").contextmenu({
+		delegate: ".hasmenu2",
+		autoFocus: true,
+		preventContextMenuForPopup: true,
+		preventSelect: true,
+		taphold: true,
+		menu: [
+			{title: "Entrada", cmd: "entrada"},
+			{title: "Salida", cmd: "salida"},
+                        {title: "Vacio", cmd: "vacio"}
+			],
+		// Handle menu selection to implement a fake-clipboard
+		select: function(event, ui) {
+			var $target = ui.target;
+			alert("select " + ui.cmd + " on " + $target.text());
+			// Optionally return false, to prevent closing the menu now
+		},
+		// Implement the beforeOpen callback to dynamically change the entries
+		beforeOpen: function(event, ui) {
+			var $menu = ui.menu,
+				$target = ui.target,
+				extraData = ui.extraData; // passed when menu was opened by call to open()
 
+			// console.log("beforeOpen", event, ui, event.originalEvent.type);
+
+			ui.menu.zIndex( $(event.target).zIndex() + 1);
+
+//			$(document)
+////				.contextmenu("replaceMenu", [{title: "aaa"}, {title: "bbb"}])
+////				.contextmenu("replaceMenu", "#options2")
+////				.contextmenu("setEntry", "cut", {title: "Cuty", uiIcon: "ui-icon-heart", disabled: true})
+//				.contextmenu("setEntry", "copy", "Copy '" + $target.text() + "'")
+//				.contextmenu("setEntry", "paste", "Paste" + (CLIPBOARD ? " '" + CLIPBOARD + "'" : ""))
+//				.contextmenu("enableEntry", "paste", (CLIPBOARD !== ""));
+
+			// Optionally return false, to prevent opening the menu now
+		}
+	});
 });
 
 </script>
@@ -138,7 +175,7 @@ $(function() {
                             <li id="va-<?php echo $vag->id; ?>" style=" display:inline-block;height: 60px; ">
                                 <span class="sort-handle">&#8225;</span>
                                 <table style="width:<?php echo $vag->tipo->medida*3.333 ?>; margin-right:0px; display:inline-block;">
-                                    <tr>
+                                    <tr class="<?php if($vag->alto==1){echo 'caja';} else {echo 'autos';}?>">
                                         <td class="<?php if($vag->alto==1){echo 'hasmenu';} else {echo 'hasmenu2';}?>"><?php echo $vag->caja1 ?></td>
                                         <?php if($vag->caja2){ echo"<td class='hasmenu'>$vag->caja2</td>";}?>
                                     </tr>

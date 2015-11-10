@@ -73,6 +73,8 @@ class ViasController extends BackendController {
             catch (Exception $e){
                 
             }
+            // Si se envia correctamente, limpiamos el formulario para evitar reenvios
+            Input::delete('orden');
         }
         
         foreach($this->vias as $row):
@@ -127,7 +129,7 @@ class ViasController extends BackendController {
                         $vag->alto = 2;
                         $vag->ancho = 2;
                         $vag->caja1 = ' --- ';
-                        $vag->caja2 = ' --- ';
+                        $vag->caja2 = null;
                         $vag->imgC1 = null;
                         $vag->imgC2 = null;
                     }
