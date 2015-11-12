@@ -39,7 +39,27 @@ class ViasController extends BackendController {
      * Método para listar
      */
     public function listar() {
-        $this->vias = Load::model('vias/vias')->getVias();
+        
+        if (Input::hasPost('caja')) {  //si se envia el formulario del caja
+            Load::models('vias/caja'); //cargamos el modelo caja
+            $caj = Input::post('caja');
+            $id_caja = $caj['id_caja'];
+            $vagon = Load::model('vias/vagon')->buscar($caj['vagon_id']);
+            if(Load::model('vias/caja')->exists("id_caja='$id_caja'")){
+                //si existe la caja la buscamos
+                $caja = Load::model('vias/caja')->buscar($id_caja);
+                $caja->vagon_id = $vagon->id; //la colocamos en el vagón
+                $caja->carga = 'salida'; //cambiamos el tipo de carga
+            }  else {// si no existe
+                $caja = new Caja(Input::post('caja')); //creamos el objeto y le damos los valores del formulario
+                $caja->vagon_id = $vagon->id; //la colocamos en el vagón
+            }
+            if ($caja->save()) { //verificamos si se guardaron los datos
+                Flash::valid('cambio realizado');
+                Input::delete('caja');
+            }
+            
+        }
         
         if (Input::hasPost('vacia')) {
             $vaciar = Load::model('vias/caja')->buscar(Input::post('vacia'));
@@ -84,6 +104,7 @@ class ViasController extends BackendController {
             Input::delete('orden');
         }
         
+        $this->vias = Load::model('vias/vias')->getVias();
         foreach($this->vias as $row):
             $row->vagones = Load::Model('vias/vagon')->vagonesVia($row->id);
             foreach($row->vagones as $vag):

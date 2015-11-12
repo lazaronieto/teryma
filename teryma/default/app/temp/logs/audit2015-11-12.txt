@@ -1,0 +1,10 @@
+[Thu, 12 Nov 15 22:33:12 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 12 Nov 15 22:33:12 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 12 Nov 15 22:34:45 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 12 Nov 15 22:34:45 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 12 Nov 15 22:35:00 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 12 Nov 15 22:35:00 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 12 Nov 15 22:35:09 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 12 Nov 15 22:35:09 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 12 Nov 15 22:36:23 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 12 Nov 15 22:36:23 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.

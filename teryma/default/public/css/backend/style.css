@@ -183,7 +183,7 @@ ul .ui-selected .sort-handle{
 
 /* Optionally define a fixed width for menus */
 .ui-menu {
-	width: 320px;
+	width: 175px;
         font-size: 5px;
 }
 .vias td img{
