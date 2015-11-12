@@ -103,7 +103,7 @@ $(function() {
 		// Handle menu selection to implement a fake-clipboard
 		select: function(event, ui) {
 			var $target = ui.target;
-			alert($target.parent().next().next().next().children().eq(0).text());
+			//alert($target.parent().next().next().next().children().eq(0).text());
                         
                         if (ui.cmd == "quitar" && $target.text()!== ' --- '){
                             quitar($target);
@@ -152,7 +152,18 @@ $(function() {
 		// Handle menu selection to implement a fake-clipboard
 		select: function(event, ui) {
 			var $target = ui.target;
+                        var $tipo;
 			alert("select " + ui.cmd + " on " + $target.text());
+                        if(/pecovasa/.test($target.parent().next().children().eq(0).children().eq(0).attr("src"))){
+                            $tipo='pecovasa-'+ui.cmd;
+//                            alert($tipo);
+//                            alert($target.parent().next().next().children().eq(0).text());
+                        }else{
+                            $tipo='transfesa-'+ui.cmd;
+                        }
+                        $('#tipo').val($tipo);
+                        $('#vagon').val($target.parent().next().next().children().eq(0).text());
+                        $('#autos').submit();
 			// Optionally return false, to prevent closing the menu now
 		},
 		// Implement the beforeOpen callback to dynamically change the entries
@@ -202,7 +213,10 @@ $(function() {
     <?php echo Ajax::form(null,null,'"id="caja1'); ?>
     <?php echo Form::hidden('vacia'); ?>
     <?php echo Form::close(); ?>
-    <?php echo Form::hidden('target'); ?>
+    <?php echo Ajax::form("playa",null,'"id="autos'); ?>
+    <?php echo Form::hidden('vagon'); ?>
+    <?php echo Form::hidden('tipo'); ?>
+    <?php echo Form::close(); ?>
 
     <?php if($vias) { ?>
 	<?php foreach($vias as $row): ?>

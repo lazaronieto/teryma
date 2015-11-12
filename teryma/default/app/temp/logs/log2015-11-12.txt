@@ -223,3 +223,16 @@
 [Thu, 12 Nov 15 22:44:57 +0100][DEBUG] DESCRIBE `usuario`
 [Thu, 12 Nov 15 22:44:57 +0100][DEBUG] DESCRIBE `menu`
 [Thu, 12 Nov 15 22:45:17 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 12 Nov 15 23:03:03 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 12 Nov 15 23:03:03 +0100][DEBUG] DESCRIBE `menu`
+[Thu, 12 Nov 15 23:04:36 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 12 Nov 15 23:04:36 +0100][DEBUG] DESCRIBE `menu`
+[Thu, 12 Nov 15 23:06:09 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 12 Nov 15 23:06:09 +0100][DEBUG] DESCRIBE `menu`
+[Thu, 12 Nov 15 23:07:36 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 12 Nov 15 23:07:36 +0100][DEBUG] DESCRIBE `menu`
+[Thu, 12 Nov 15 23:14:11 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 12 Nov 15 23:14:26 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 12 Nov 15 23:58:11 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 12 Nov 15 23:58:12 +0100][DEBUG] DESCRIBE `menu`
+[Thu, 12 Nov 15 23:58:20 +0100][DEBUG] DESCRIBE `usuario`

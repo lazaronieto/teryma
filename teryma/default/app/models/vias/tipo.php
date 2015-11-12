@@ -29,4 +29,8 @@ class Tipo extends ActiveRecord {
     public function tipoId($id){
         return $this->find($id);
     }
+    
+    public function buscar ($tipo) {
+        return $this->find_first("tipo='$tipo'");
+    }
 }

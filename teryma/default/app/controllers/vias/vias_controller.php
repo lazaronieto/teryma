@@ -40,6 +40,18 @@ class ViasController extends BackendController {
      */
     public function listar() {
         
+        if (Input::hasPost('vagon')) {
+            $va = Input::post('vagon');
+            $vagon = Load::model('vias/vagon')->buscar(Input::post('vagon'));
+            $tipo = Load::model('vias/tipo')->buscar(Input::post('tipo'));
+            $vagon->tipo_id = $tipo->id;
+            if ($vagon->save()) { //verificamos si se guardaron los datos
+                Flash::valid('cambio realizado');
+                Input::delete('vagon');
+                Input::delete('tipo');
+            }
+        }
+        
         if (Input::hasPost('caja')) {  //si se envia el formulario del caja
             Load::models('vias/caja'); //cargamos el modelo caja
             $caj = Input::post('caja');
