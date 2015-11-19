@@ -114,6 +114,7 @@ $(function() {
                             }
                             $('#add-caja1').click();
                             $('#caja_vagon_id').val($target.parent().next().next().next().children().eq(0).text());
+                            $('#caja_id_caja').focus();
                         }
 			// Optionally return false, to prevent closing the menu now
 		},
@@ -200,6 +201,7 @@ $(function() {
             //location.reload(true);
             //return false;
         });
+        
 });
 
 </script>
@@ -279,7 +281,24 @@ $(function() {
                 <?php echo DwForm::submit("Guardar", array('class'=>'btn btn-primary','id'=>'boton')); ?>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
             </div>
+            <?php echo DwForm::focus('caja.id_caja');?>
             <?php echo DwForm::close(); ?>
         </div>
     </div>
 </div>
+<?php //echo Form::button( 'buscar caja', array('class'=>'btn-success active','id'=>'buscar')); ?>
+<?php echo DwHtml::button(NULL, 'buscar caja', array('class'=>'btn-info','id'=>'buscar'), 'fa-search', NULL); ?>
+<?php echo ' '. Form::number('cajaBuscar', array('class'=>'input-required'), null, 'Nª de caja'); ?>
+<?php echo ' '.DwHtml::button(NULL, 'limpiar', array('class'=>'btn-info','id'=>'limpiar'), 'fa-repeat', NULL); ?>
+<script>
+    $("#buscar").click(function(){
+        var $texto = $('#cajaBuscar').val();
+        if($texto!==''){
+            $('td:contains('+$texto+')').css('background-color', '#F90606');
+        }
+        $('#cajaBuscar').val('');
+    });
+    $('#limpiar').click(function(){
+        $("td").css('background-color', '#FFFFFF');
+    });
+</script>

@@ -58,3 +58,69 @@
 [Fri, 13 Nov 15 00:41:30 +0100][DEBUG] DESCRIBE `usuario`
 [Fri, 13 Nov 15 00:41:40 +0100][DEBUG] DESCRIBE `usuario`
 [Fri, 13 Nov 15 00:41:47 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 00:43:59 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 00:44:06 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 00:44:26 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 00:45:11 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 00:45:11 +0100][DEBUG] DESCRIBE `menu`
+[Fri, 13 Nov 15 00:49:10 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 01:02:57 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 01:02:57 +0100][DEBUG] DESCRIBE `acceso`
+[Fri, 13 Nov 15 01:02:57 +0100][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','2','::1','2015-11-13 1:02:57')
+[Fri, 13 Nov 15 01:02:57 +0100][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 76 LIMIT 1
+[Fri, 13 Nov 15 01:02:57 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:22:42 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:22:42 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:22:52 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:22:52 +0100][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Fri, 13 Nov 15 10:22:52 +0100][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Fri, 13 Nov 15 10:22:52 +0100][DEBUG] DESCRIBE `acceso`
+[Fri, 13 Nov 15 10:22:52 +0100][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','::1','2015-11-13 10:22:52')
+[Fri, 13 Nov 15 10:22:53 +0100][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 77 LIMIT 1
+[Fri, 13 Nov 15 10:22:53 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:22:53 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:22:53 +0100][DEBUG] DESCRIBE `menu`
+[Fri, 13 Nov 15 10:23:01 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:23:01 +0100][DEBUG] DESCRIBE `backup`
+[Fri, 13 Nov 15 10:23:01 +0100][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Fri, 13 Nov 15 10:23:01 +0100][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Fri, 13 Nov 15 10:23:16 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:23:16 +0100][DEBUG] DESCRIBE `backup`
+[Fri, 13 Nov 15 10:23:16 +0100][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Fri, 13 Nov 15 10:23:16 +0100][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Fri, 13 Nov 15 10:23:16 +0100][DEBUG] DESCRIBE `menu`
+[Fri, 13 Nov 15 10:26:18 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:26:29 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:26:29 +0100][DEBUG] DESCRIBE `backup`
+[Fri, 13 Nov 15 10:26:29 +0100][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Fri, 13 Nov 15 10:26:29 +0100][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Fri, 13 Nov 15 10:30:07 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:30:07 +0100][DEBUG] DESCRIBE `backup`
+[Fri, 13 Nov 15 10:30:07 +0100][DEBUG] SELECT COUNT(*) FROM backup  INNER JOIN usuario ON usuario.id = backup.usuario_id 
+[Fri, 13 Nov 15 10:30:07 +0100][DEBUG] SELECT backup.*, usuario.nombre, usuario.apellido FROM backup INNER JOIN usuario ON usuario.id = backup.usuario_id  ORDER BY backup.backup_at DESC LIMIT 30 OFFSET 0
+[Fri, 13 Nov 15 10:30:07 +0100][DEBUG] DESCRIBE `menu`
+[Fri, 13 Nov 15 10:30:57 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:33:45 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:33:45 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:34:46 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:34:46 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:34:46 +0100][DEBUG] DESCRIBE `menu`
+[Fri, 13 Nov 15 10:41:31 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:41:32 +0100][DEBUG] DESCRIBE `menu`
+[Fri, 13 Nov 15 10:43:30 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:43:30 +0100][DEBUG] DESCRIBE `menu`
+[Fri, 13 Nov 15 10:43:42 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:45:34 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:45:34 +0100][DEBUG] DESCRIBE `menu`
+[Fri, 13 Nov 15 10:45:38 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:48:22 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:48:22 +0100][DEBUG] DESCRIBE `menu`
+[Fri, 13 Nov 15 10:48:26 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:52:07 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 10:52:07 +0100][DEBUG] DESCRIBE `menu`
+[Fri, 13 Nov 15 11:34:09 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 11:45:13 +0100][DEBUG] DESCRIBE `usuario`
+[Fri, 13 Nov 15 11:45:13 +0100][DEBUG] DESCRIBE `acceso`
+[Fri, 13 Nov 15 11:45:13 +0100][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','2','::1','2015-11-13 11:45:13')
+[Fri, 13 Nov 15 11:45:13 +0100][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 78 LIMIT 1
+[Fri, 13 Nov 15 11:45:13 +0100][DEBUG] DESCRIBE `usuario`
