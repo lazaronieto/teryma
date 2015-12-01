@@ -112,3 +112,8 @@
 [Thu, 19 Nov 15 22:50:43 +0100][DEBUG] DESCRIBE `usuario`
 [Thu, 19 Nov 15 22:50:46 +0100][DEBUG] DESCRIBE `usuario`
 [Thu, 19 Nov 15 22:50:46 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 19 Nov 15 22:54:32 +0100][DEBUG] DESCRIBE `usuario`
+[Thu, 19 Nov 15 22:54:32 +0100][DEBUG] DESCRIBE `acceso`
+[Thu, 19 Nov 15 22:54:32 +0100][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','2','::1','2015-11-19 22:54:32')
+[Thu, 19 Nov 15 22:54:32 +0100][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 81 LIMIT 1
+[Thu, 19 Nov 15 22:54:32 +0100][DEBUG] DESCRIBE `usuario`
