@@ -30,7 +30,7 @@ class PdfController extends BackendController {
         $this->pd1->SetLineWidth(.3);
         $this->pd1->SetFont('Arial','B');
         // Cabecera
-        $w = array(30, 30, 30, 30, 30);
+        $w = array(30, 30, 30, 30, 40);
         $header = array('via'.$via, 'vagon', 'caja 1', 'caja 2', 'tipo');
         for($i=0;$i<count($header);$i++){
             $this->pd1->Cell($w[$i],7,$header[$i],1,0,'C',true);

@@ -161,7 +161,12 @@ ul .ui-selected .sort-handle{
 
 .blanco {
     background-color: white;
-    width: 2000px !important;
+    width: 2000px;
+}
+#v-5 {
+    width: 2000px;
+    border: 1px solid #7C7C7C;
+    border-bottom: 3px solid black;
 }
 #tabla tr td ,#tabla tr th{
     text-align: center;
