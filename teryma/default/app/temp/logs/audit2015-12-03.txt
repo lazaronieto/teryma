@@ -1,0 +1,4 @@
+[Thu, 03 Dec 15 11:44:48 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 03 Dec 15 11:44:48 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 03 Dec 15 11:46:29 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.
+[Thu, 03 Dec 15 11:46:29 +0100][INFO] [/sistema/configuracion/index/][admin][::1] Se ha actualizado el archivo de configuración del sistema.

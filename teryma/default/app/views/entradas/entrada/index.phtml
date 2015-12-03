@@ -17,9 +17,10 @@
 View::flash(); ?>
 <?php View::process($page_module, $page_title, $set_title); ?>
 <div class="container shell-view">
+    <?php echo DwForm::hidden('vagones',null,' '); ?>
+    <?php echo DwForm::hidden('cont',null,'1'); ?>
     
-    
-    <div class="row">
+    <div class="row" id="div1">
         <?php echo DwForm::open('', '', array('id'=>'form-tren', 'class'=>'')); ?>
         <div class="col-md-1">&nbsp;</div>
         <div class="col-md-4">
@@ -33,10 +34,102 @@ View::flash(); ?>
             <?php echo DwForm::hidden('tren.tipo',null,'entrada'); ?>
             <?php echo DwForm::select('tren.vias_id',array('1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5'), array('class'=>'input-required'),'1','Vía'); ?>
             <div class="form-actions">
-                <?php echo DwForm::send('Guardar tren'); ?>
+                <?php //echo DwForm::send('Guardar tren'); ?>
+                <?php echo DwForm::submit("Guardar", array('class'=>'btn btn-primary','id'=>'boton')); ?>
+                <?php echo '   '; ?>
                 <?php echo DwForm::cancel(); ?>
             </div>
         </div>
         <?php echo DwForm::close(); ?>
     </div>
+    <div id="div2"></div>
+    
+    <?php echo DwForm::fieldset("<a id='add-vagon' href='#form-add-vagon' class='btn btn-default' data-toggle='modal'><i class='fa fa-check fa-pd-expand'></i>Agregar caja</a>"); ?>
+    <div class="modal fade" tabindex="-1" id="form-add-vagon" role="dialog" aria-labelledby="form-add-vagon" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="vag">
+                <?php echo Ajax::form(null, null, null, 'post', array('id'=>'form-vagon'))?>
+                <?php echo DwForm::open('', '', array('id'=>'form-vagon', 'class'=>'')); ?>
+                <div class="modal-header">                
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="numero">Vagón</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <?php echo DwForm::text('vagon.id_vagon', array('class'=>'input-required'), null, 'Nª de vagon'); ?>
+                            <?php echo DwForm::hidden('vagon.vias_id',null,Session::get('via')); ?>
+                        </div>
+                        <div class="col-md-5">
+                            <?php echo DwForm::hidden('vagon.orden',null,Session::get('orden')); ?>
+                            <?php echo DwForm::select('vagon.tipo_id',array(''=>'', '1'=>'ingles', '2'=>'aleman', '3'=>'transfesa-vacio', '4'=>'portacont-aleman', '5'=>'aleman-ingles', '6'=>'portacont-ingles', '7'=>'transfesa-entrada','8'=>'transfesa-salida', '11'=>'pecovasa-vacio', '12'=>'pecovasa-entrada', '13'=>'pecovasa-salida'), array('class'=>'input-required'),'', 'Tipo'); ?>
+                        </div>
+                    </div>
+                        <h3>Caja 1</h3>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <?php echo DwForm::number('caja.id_caja', array('class'=>'input-lower','min'=>"0" ,'step'=>"0"), null, 'Nª de caja'); ?>
+                            <?php echo DwForm::hidden('caja.carga',null, 'entrada'); ?>
+                        </div>
+                        <div class="col-md-5">
+                            <?php echo DwForm::hidden('caja.vagon_id',null,' '); ?>
+                            <?php echo DwForm::select('caja.tipo',array(''=>'', 'TF'=>'TF', 'mega-combi'=>'mega-combi', 'mega-box'=>'mega-box', 'contenedor'=>'contenedor'), array('class'=>'input-lower'),'', 'Tipo de caja'); ?>
+                        </div>
+                    </div>
+                        <h3>Caja 2</h3>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <?php echo DwForm::number('caja2.id_caja', array('class'=>'input-lower','min'=>"0" ,'step'=>"0"), null, 'Nª de caja'); ?>
+                            <?php echo DwForm::hidden('caja2.carga',null, 'entrada'); ?>
+                        </div>
+                        <div class="col-md-5">
+                            <?php echo DwForm::hidden('caja2.vagon_id',null,' '); ?>
+                            <?php echo DwForm::select('caja2.tipo',array(''=>'', 'TF'=>'TF', 'mega-combi'=>'mega-combi', 'mega-box'=>'mega-box', 'contenedor'=>'contenedor'), array('class'=>'input-lower'),'', 'Tipo de caja'); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <?php echo DwForm::submit("Guardar", array('class'=>'btn btn-primary','id'=>'boton2')); ?>
+                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                </div>
+                <?php echo DwForm::close(); ?>
+            </div>
+        </div>
+    </div>
+    
 </div>
+<script>
+$(function(){  
+
+    var contar;
+    var cont;
+    $("#boton2").click(function(){
+        contar = $('#tren_vagones').val();
+        //alert(contar);
+        //alert(cont);
+        alert($('#tren_vagones').val());
+        alert($('#cont').val());
+        //$('#cont').val();
+//        $('#caja_id_caja').val('');
+//        $('#caja_vagon_id').attr('value', '');
+//        $('#caja2_id_caja').attr('value', '');
+//        $('#caja2_vagon_id').attr('value', '');
+        if($('#tren_vagones').val()==$('#cont').val()){
+            jsSpinner('hide');
+            $("#form-add-vagon").modal('hide');
+            $('#cont').val(1);
+            //$('#form-vagon').submit();
+            alert($('#cont').val());
+            //return false;
+        }
+        cont=$('#cont').val();
+        cont++;
+        $('#cont').val(cont);
+        alert($('#cont').val());
+        $('#tren_vagones').val(contar);
+        //$("#form-add-vagon").modal('show');
+        //location.reload(true);
+        //return false;
+    });
+});
+</script>
