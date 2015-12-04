@@ -34,21 +34,25 @@ View::flash(); ?>
             <?php echo DwForm::hidden('tren.tipo',null,'entrada'); ?>
             <?php echo DwForm::select('tren.vias_id',array('1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5'), array('class'=>'input-required'),'1','Vía'); ?>
             <div class="form-actions">
-                <?php //echo DwForm::send('Guardar tren'); ?>
+                <p style="color: red;">Guardar antes de añadir vagones</p>
+                <?php //echo 'Guardar antes de añadir vagones <br>'; ?>
                 <?php echo DwForm::submit("Guardar", array('class'=>'btn btn-primary','id'=>'boton')); ?>
                 <?php echo '   '; ?>
                 <?php echo DwForm::cancel(); ?>
+                <?php echo '   '; ?>
+                <button type="button" id="add-vagon" class="btn btn-primary" data-toggle="modal" data-target="#form-add-vagon">Añadir Vagones</button>
+                <?php //echo DwForm::fieldset("<a id='add-vagon' href='#form-add-vagon' class='btn btn-default' data-toggle='modal'><i class='fa fa-check fa-pd-expand'></i>VAGONES</a>"); ?>
             </div>
         </div>
         <?php echo DwForm::close(); ?>
     </div>
-    <div id="div2"></div>
     
-    <?php echo DwForm::fieldset("<a id='add-vagon' href='#form-add-vagon' class='btn btn-default' data-toggle='modal'><i class='fa fa-check fa-pd-expand'></i>Agregar caja</a>"); ?>
+    <!--<button type="button" id="add-vagon" class="btn btn-info btn-lg" data-toggle="modal" data-target="#form-add-vagon">Más Info</button>-->
+    
     <div class="modal fade" tabindex="-1" id="form-add-vagon" role="dialog" aria-labelledby="form-add-vagon" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content" id="vag">
-                <?php echo Ajax::form(null, null, null, 'post', array('id'=>'form-vagon'))?>
+            <div class="modal-content">
+                <?php echo Ajax::form(null)?>
                 <?php echo DwForm::open('', '', array('id'=>'form-vagon', 'class'=>'')); ?>
                 <div class="modal-header">                
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -100,36 +104,44 @@ View::flash(); ?>
 </div>
 <script>
 $(function(){  
-
+    
     var contar;
     var cont;
+    
     $("#boton2").click(function(){
         contar = $('#tren_vagones').val();
-        //alert(contar);
-        //alert(cont);
-        alert($('#tren_vagones').val());
-        alert($('#cont').val());
-        //$('#cont').val();
-//        $('#caja_id_caja').val('');
-//        $('#caja_vagon_id').attr('value', '');
-//        $('#caja2_id_caja').attr('value', '');
-//        $('#caja2_vagon_id').attr('value', '');
         if($('#tren_vagones').val()==$('#cont').val()){
             jsSpinner('hide');
             $("#form-add-vagon").modal('hide');
             $('#cont').val(1);
-            //$('#form-vagon').submit();
-            alert($('#cont').val());
-            //return false;
         }
         cont=$('#cont').val();
         cont++;
         $('#cont').val(cont);
-        alert($('#cont').val());
         $('#tren_vagones').val(contar);
-        //$("#form-add-vagon").modal('show');
-        //location.reload(true);
-        //return false;
+    });
+    $('#vagon_id_vagon').focus(function(){
+        $('#vagon_id_vagon').val('');
+        $('#caja_id_caja').val('');
+        $('#caja2_id_caja').val('');
+        //$('#caja_tipo').val('');
+        $('#caja2_tipo').val('');
+    });
+    $('#vagon_tipo_id').change(function(){
+        var uno=$('#vagon_tipo_id').val();
+        if(uno==3 || uno==7 || uno==8 || uno==11 || uno==12 || uno==13){
+            $('#caja_id_caja').val('').attr('disabled', 'disabled');
+            $('#caja2_id_caja').val('').attr('disabled', 'disabled');
+            $('#caja_tipo').val('').attr('disabled', 'disabled');
+            $('#caja2_tipo').val('').attr('disabled', 'disabled');
+        } else {
+            $('#vagon_id_vagon').removeAttr("disabled");
+            $('#caja_id_caja').val('').removeAttr("disabled");
+            $('#caja2_id_caja').val('').removeAttr("disabled");
+            $('#caja_tipo').val('').removeAttr("disabled");
+            $('#caja2_tipo').val('').removeAttr("disabled");
+        }
+        
     });
 });
 </script>
