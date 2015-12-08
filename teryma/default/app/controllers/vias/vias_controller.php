@@ -52,6 +52,20 @@ class ViasController extends BackendController {
             }
         }
         
+        if (Input::hasPost('vagon1')) {
+            $vagon = Load::model('vias/vagon')->buscar(Input::post('vagon1'));
+            $vagon->aco = Input::post('acoplar');
+            if ($vagon->save()) { //verificamos si se guardaron los datos
+                if(Input::post('acoplar')== 'aco'){
+                    Flash::valid('Vagon '.Input::post('vagon1').' acoplado');
+                }  else {
+                    Flash::valid('Vagon '.Input::post('vagon1').' desacoplado');
+                }
+                Input::delete('vagon1');
+                Input::delete('acoplar');
+            }
+        }
+        
         if (Input::hasPost('caja')) {  //si se envia el formulario del caja
             Load::models('vias/caja'); //cargamos el modelo caja
             $caj = Input::post('caja');
@@ -61,7 +75,7 @@ class ViasController extends BackendController {
                 //si existe la caja la buscamos
                 $caja = Load::model('vias/caja')->buscar($id_caja);
                 $caja->vagon_id = $vagon->id; //la colocamos en el vagón
-                $caja->carga = 'salida'; //cambiamos el tipo de carga
+                $caja->carga = 'entrada'; //cambiamos el tipo de carga
             }  else {// si no existe
                 $caja = new Caja(Input::post('caja')); //creamos el objeto y le damos los valores del formulario
                 $caja->vagon_id = $vagon->id; //la colocamos en el vagón
@@ -125,6 +139,8 @@ class ViasController extends BackendController {
                 $tipoId = $vag->tipo->id;
                 $cajas = $vag->getCaja();
                 if (count($cajas)==2){
+                    $vag->carga1 = $cajas[0]->carga;
+                    $vag->carga1 = $cajas[1]->carga;
                     $vag->caja1 = $cajas[0]->id_caja;
                     $vag->caja2 = $cajas[1]->id_caja;
                     $vag->imgC1 = $cajas[0]->tipo.'.png';
@@ -134,6 +150,7 @@ class ViasController extends BackendController {
                 }
                 if (count($cajas)==1){
                     if($tipoId==2 || $tipoId==4 || $tipoId==5 || $tipoId==6){
+                        $vag->carga1 = $cajas[0]->carga;
                         $vag->alto = 1;
                         $vag->ancho = 2;
                         $vag->caja1 = $cajas[0]->id_caja;
@@ -141,6 +158,7 @@ class ViasController extends BackendController {
                         $vag->imgC1 = $cajas[0]->tipo.'.png';
                         $vag->imgC2 = 'vacio.png';
                     }elseif ($tipoId==1) {
+                        $vag->carga1 = $cajas[0]->carga;
                         $vag->alto = 1;
                         $vag->ancho = 1;
                         $vag->caja1 = $cajas[0]->id_caja;

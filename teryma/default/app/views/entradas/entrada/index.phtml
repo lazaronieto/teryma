@@ -118,6 +118,7 @@ $(function(){
         cont=$('#cont').val();
         cont++;
         $('#cont').val(cont);
+        $('#numero').text('Vagón '+cont);
         $('#tren_vagones').val(contar);
     });
     $('#vagon_id_vagon').focus(function(){
@@ -125,7 +126,7 @@ $(function(){
         $('#caja_id_caja').val('');
         $('#caja2_id_caja').val('');
         //$('#caja_tipo').val('');
-        $('#caja2_tipo').val('');
+        //$('#caja2_tipo').val('');
     });
     $('#vagon_tipo_id').change(function(){
         var uno=$('#vagon_tipo_id').val();
@@ -134,8 +135,12 @@ $(function(){
             $('#caja2_id_caja').val('').attr('disabled', 'disabled');
             $('#caja_tipo').val('').attr('disabled', 'disabled');
             $('#caja2_tipo').val('').attr('disabled', 'disabled');
-        } else {
-            $('#vagon_id_vagon').removeAttr("disabled");
+        } else if(uno==1){
+            $('#caja_id_caja').val('').removeAttr("disabled");
+            $('#caja2_id_caja').val('').attr('disabled', 'disabled');
+            $('#caja_tipo').val('').removeAttr("disabled");
+            $('#caja2_tipo').val('').attr('disabled', 'disabled');
+        }else {
             $('#caja_id_caja').val('').removeAttr("disabled");
             $('#caja2_id_caja').val('').removeAttr("disabled");
             $('#caja_tipo').val('').removeAttr("disabled");

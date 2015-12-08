@@ -199,3 +199,13 @@ ul .ui-selected .sort-handle{
     border-width: 0px !important;
     margin:0px 0px !important;
 }
+
+.des{
+    border-right: solid 3px red;
+}
+
+.buscar{
+    position: fixed;
+    top: 118px;
+    right: 10px;
+}

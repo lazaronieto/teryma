@@ -100,16 +100,12 @@ class EntradaController extends BackendController {
                     //si existe la caja la buscamos
                     $caja = Load::model('vias/caja')->buscar($id_caja);
                     $caja->vagon_id = $vagonId; //la colocamos en el vagón
-                    $caja->carga = 'salida'; //cambiamos el tipo de carga
+                    $caja->carga = 'entrada'; //cambiamos el tipo de carga
                 }  else {// si no existe
                     $caja = new Caja(Input::post('caja')); //creamos el objeto y le damos los valores del formulario
                     $caja->vagon_id = $vagonId; //la colocamos en el vagón
                 }
                 if ($caja->save()) { //verificamos si se guardaron los datos
-                    //Flash::valid('Añade otra caja al vagón o vagón nuevo');
-                    //Router::toAction('vagon'); //redireccionamos al formulario de los vagones
-                    //buscamos el id de la caja recordar que todos los id son auto-increment
-                    //$idCaja = Load::model('entradas/caja')->find_first("conditions: id_caja ='$caja->id_caja'", "columns: id");
                     //buscamos la fila a modificar de composicion
                     $fila = Load::model('entradas/composicion')->buscarFila($vagonId,$tre);
                     //si la primera caja esta vacia colocamos el id de la caja
@@ -131,16 +127,12 @@ class EntradaController extends BackendController {
                     //si existe la caja la buscamos
                     $caja = Load::model('vias/caja')->buscar($id_caja);
                     $caja->vagon_id = $vagonId; //la colocamos en el vagón
-                    $caja->carga = 'salida'; //cambiamos el tipo de carga
+                    $caja->carga = 'entrada'; //cambiamos el tipo de carga
                 }  else {// si no existe
                     $caja = new Caja(Input::post('caja2')); //creamos el objeto y le damos los valores del formulario
                     $caja->vagon_id = $vagonId;
                 }
                 if ($caja->save()) { //verificamos si se guardaron los datos
-                    //Flash::valid('Añade otra caja al vagón o vagón nuevo');
-                    //Router::toAction('vagon'); //redireccionamos al formulario de los vagones
-                    //buscamos el id de la caja recordar que todos los id son auto-increment
-                    //$idCaja = Load::model('entradas/caja')->find_first("conditions: id_caja ='$caja->id_caja'", "columns: id");
                     //buscamos la fila a modificar de composicion
                     $fila = Load::model('entradas/composicion')->buscarFila($vagonId,$tre);
                     //si la primera caja esta vacia colocamos el id de la caja

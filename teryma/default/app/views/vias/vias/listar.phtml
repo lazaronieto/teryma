@@ -140,66 +140,67 @@ $(function() {
 		}
 	});
         $(".autos").contextmenu({
-		delegate: ".hasmenu2",
-		autoFocus: true,
-		preventContextMenuForPopup: true,
-		preventSelect: true,
-		taphold: true,
-		menu: [
-			{title: "Entrada", cmd: "entrada"},
-			{title: "Salida", cmd: "salida"},
-                        {title: "Vacio", cmd: "vacio"}
-			],
-		// Handle menu selection to implement a fake-clipboard
-		select: function(event, ui) {
-			var $target = ui.target;
-                        var $tipo;
-			//alert("select " + ui.cmd + " on " + $target.text());
-                        if(/pecovasa/.test($target.parent().next().children().eq(0).children().eq(0).attr("src"))){
-                            $tipo='pecovasa-'+ui.cmd;
+            delegate: ".hasmenu2",
+            autoFocus: true,
+            preventContextMenuForPopup: true,
+            preventSelect: true,
+            taphold: true,
+            menu: [
+                    {title: "Entrada", cmd: "entrada"},
+                    {title: "Salida", cmd: "salida"},
+                    {title: "Vacio", cmd: "vacio"}
+                    ],
+            // Handle menu selection to implement a fake-clipboard
+            select: function(event, ui) {
+                    var $target = ui.target;
+                    var $tipo;
+                    //alert("select " + ui.cmd + " on " + $target.text());
+                    if(/pecovasa/.test($target.parent().next().children().eq(0).children().eq(0).attr("src"))){
+                        $tipo='pecovasa-'+ui.cmd;
 //                            alert($tipo);
 //                            alert($target.parent().next().next().children().eq(0).text());
-                        }else{
-                            $tipo='transfesa-'+ui.cmd;
-                        }
-                        $('#tipo').val($tipo);
-                        $('#vagon').val($target.parent().next().next().children().eq(0).text());
-                        $('#autos').submit();
-			// Optionally return false, to prevent closing the menu now
-		},
-		// Implement the beforeOpen callback to dynamically change the entries
-		beforeOpen: function(event, ui) {
-			var $menu = ui.menu,
-				$target = ui.target,
-				extraData = ui.extraData; // passed when menu was opened by call to open()
-
-			// console.log("beforeOpen", event, ui, event.originalEvent.type);
-
-			ui.menu.zIndex( $(event.target).zIndex() + 1);
-
-//			$(document)
-////				.contextmenu("replaceMenu", [{title: "aaa"}, {title: "bbb"}])
-////				.contextmenu("replaceMenu", "#options2")
-////				.contextmenu("setEntry", "cut", {title: "Cuty", uiIcon: "ui-icon-heart", disabled: true})
-//				.contextmenu("setEntry", "copy", "Copy '" + $target.text() + "'")
-//				.contextmenu("setEntry", "paste", "Paste" + (CLIPBOARD ? " '" + CLIPBOARD + "'" : ""))
-//				.contextmenu("enableEntry", "paste", (CLIPBOARD !== ""));
-
-			// Optionally return false, to prevent opening the menu now
-		}
+                    }else{
+                        $tipo='transfesa-'+ui.cmd;
+                    }
+                    $('#tipo').val($tipo);
+                    $('#vagon').val($target.parent().next().next().children().eq(0).text());
+                    $('#autos').submit();
+                    // Optionally return false, to prevent closing the menu now
+            }
 	});
-    
-        //$("#caja").submit(function(){
-            $("#boton").click(function(){
-            //$('#form-caja').submit();
-//            $('#caja_id_caja').attr('value', '');
-//            $('#caja_carga').attr('value', '');
-//            $('#caja_vagon_id').attr('value', '');
-//            $('#caja_tipo').attr('value', '');
+        $(".acople").contextmenu({
+            delegate: ".hasmenu3",
+            autoFocus: true,
+            preventContextMenuForPopup: true,
+            preventSelect: true,
+            taphold: true,
+            menu: [
+                    {title: "Acoplar", cmd: "aco"},
+                    {title: "Desacoplar", cmd: "des"}
+                    ],
+            // Handle menu selection to implement a fake-clipboard
+            select: function(event, ui) {
+                var $target = ui.target;
+                if(ui.cmd=='aco'){
+                    //$target.parent().parent().css('border-right', 'none');
+                    $('#vagon1').val($target.parent().next().children().eq(0).text());
+                    $('#acoplar').val('aco');
+                    $('#acople').submit();
+                }
+                if(ui.cmd=='des'){
+                    //$target.parent().parent().css('border-right', 'solid 3px red');
+                    $('#vagon1').val($target.parent().next().children().eq(0).text());
+                    $('#acoplar').val('des');
+                    $('#acople').submit();
+                }
+                //$('#acople').submit();
+                // Optionally return false, to prevent closing the menu now
+            }
+	});
+        
+        $("#boton").click(function(){
             jsSpinner('hide');
             $("#form-add-caja").modal('hide');
-            //location.reload(true);
-            //return false;
         });
         
 });
@@ -219,6 +220,11 @@ $(function() {
     <?php echo Form::hidden('vagon'); ?>
     <?php echo Form::hidden('tipo'); ?>
     <?php echo Form::close(); ?>
+    <?php echo Ajax::form('playa',null,'"id="acople'); ?>
+    <?php //echo DwForm::open('', '', array('id'=>'acople', 'class'=>'')); ?>
+    <?php echo Form::hidden('acoplar'); ?>
+    <?php echo Form::hidden('vagon1'); ?>
+    <?php echo Form::close(); ?>
 
     <?php if($vias) { ?>
 	<?php foreach($vias as $row): ?>
@@ -227,9 +233,9 @@ $(function() {
                 <div class="vias" style="width:<?php echo $row->largo *3.333; ?>px; height:60px; padding-bottom:1px; border: 1px solid #7C7C7C; border-bottom: 3px solid black;" id="via<?php echo $row->id; ?>">
                     <ul id="v-<?php echo $row->id; ?>" class="cont" style="width:<?php echo $row->largo*3.333; ?>px; height:60px; list-style: none;">
                         <?php foreach($row->vagones as $vag): ?>
-                            <li id="va-<?php echo $vag->id; ?>" style=" display:inline-block;height: 60px; ">
+                        <li id="va-<?php echo $vag->id; ?>" style=" display:inline-block;height: 60px; ">
                                 <span class="sort-handle">&#8225;</span>
-                                <table style="width:<?php echo $vag->tipo->medida*3.333 ?>; margin-right:0px; display:inline-block;">
+                                <table style="width:<?php echo $vag->tipo->medida*3.333 ?>; margin-right:0px; display:inline-block;" class="<?php echo $vag->aco; ?>">
                                     <tr class="<?php if($vag->alto==1){echo 'caja';} else {echo 'autos';}?>">
                                         <td class="primero <?php if($vag->alto==1){echo 'hasmenu';} else {echo 'hasmenu2';}?>"><?php echo $vag->caja1 ?></td>
                                         <?php if($vag->caja2){ echo"<td class='hasmenu segundo'>$vag->caja2</td>";}?>
@@ -240,7 +246,7 @@ $(function() {
                                         if($vag->imgC2){echo '<td style="background: url('.PUBLIC_PATH.'/img/vagones/'.$vag->imgC2.')no-repeat; height: 14px; width: 50px;"></td>';}//echo '<td>'.Html::img('vagones/'.$vag->imgC2, $alt=null,null).'</td>';}
                                     echo '</tr>';} ?>
                                     
-                                    <tr><td colspan="<?php echo $vag->ancho ?>" rowspan="<?php //echo $vag->alto ?>"<?php if($vag->alto==1){echo 'style="background: url('.PUBLIC_PATH.'/img/vagones/'.$vag->imgV.')no-repeat; height: 7px;"';} ?>><?php if($vag->alto==2){echo Html::img('vagones/'.$vag->imgV, $alt=NULL,null);} ?></td></tr>
+                                    <tr class="acople"><td class="hasmenu3" colspan="<?php echo $vag->ancho ?>" rowspan="<?php //echo $vag->alto ?>"<?php if($vag->alto==1){echo 'style="background: url('.PUBLIC_PATH.'/img/vagones/'.$vag->imgV.')no-repeat; height: 7px;"';} ?>><?php if($vag->alto==2){echo Html::img('vagones/'.$vag->imgV, $alt=NULL,null);} ?></td></tr>
                                     <tr><td colspan="<?php echo $vag->ancho ?>" style="width: <?php echo $vag->tipo->medida*3.333 ?>px;"><?php echo $vag->id_vagon ?></td></tr>
                                 </table>
                             </li>
@@ -252,7 +258,12 @@ $(function() {
         <?php endforeach; ?>
         <div class="row separador" style="width:100%; height:30px;"></div>
     <?php } ?>
-  
+        <div class="buscar">
+            <?php //echo Form::button( 'buscar caja', array('class'=>'btn-success active','id'=>'buscar')); ?>
+            <?php echo DwHtml::button(NULL, 'buscar', array('class'=>'btn-info','id'=>'buscar'), 'fa-search', NULL); ?>
+            <?php echo ' '. Form::text('cajaBuscar', array('class'=>'input-required'), null, 'Nª de caja'); ?>
+            <?php echo ' '.DwHtml::button(NULL, 'limpiar', array('class'=>'btn-info','id'=>'limpiar'), 'fa-repeat', NULL); ?>
+        </div>
 </div>
 
 <?php echo DwForm::fieldset("<a id='add-caja1' href='#form-add-caja' class='btn btn-default hidden' data-toggle='modal'><i class='fa fa-check fa-pd-expand'></i>Agregar caja</a>"); ?>
@@ -285,11 +296,9 @@ $(function() {
             <?php echo DwForm::close(); ?>
         </div>
     </div>
+    
 </div>
-<?php //echo Form::button( 'buscar caja', array('class'=>'btn-success active','id'=>'buscar')); ?>
-<?php echo DwHtml::button(NULL, 'buscar caja', array('class'=>'btn-info','id'=>'buscar'), 'fa-search', NULL); ?>
-<?php echo ' '. Form::number('cajaBuscar', array('class'=>'input-required'), null, 'Nª de caja'); ?>
-<?php echo ' '.DwHtml::button(NULL, 'limpiar', array('class'=>'btn-info','id'=>'limpiar'), 'fa-repeat', NULL); ?>
+
 <script>
     $("#buscar").click(function(){
         var $texto = $('#cajaBuscar').val();
